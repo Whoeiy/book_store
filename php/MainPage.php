@@ -21,13 +21,14 @@
     <?php session_start(); ?>
     <?php
 //    var $src;
+    // $_SESSION = array();
     if (isset($_SESSION['lname'])) {  // Checking whether the session is already there or not if
         // true then header redirect it to the home page directly
 
         echo 'Welcome! &nbsp' . $_SESSION['lname'] . '';
         $src = "account.php";
     }else{
-        $src = "login.php";
+        $src = "login.html";
     }
     ?>
 
@@ -37,7 +38,7 @@
 
 <!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
     <?php
-    echo "<li><a href=   $src ><img src='../img/login.png' width='50' height='50'></a></li>"
+    echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50'></a></li>"
     ?>
 
 
