@@ -1,24 +1,3 @@
-<?php
-    function getInfo($target, $file, $place){
-        $items = array();
-        $fp = fopen($file, 'r');
-        while(!feof($fp)){
-            $line = fgets($fp);
-            $arr = explode(',', $line);
-            if($target == $arr[$place])
-            $items[] = $line;
-        }
-        fclose($fp);
-        return $items;
-    }
-    // userInfo
-    $user = getInfo($userId, './user.txt', 0);
-    // orderInfo
-    $order = getInfo($userId, './order.txt', 0);
-    // orderItemInfo
-    $oitems = getInfo($orderid, './orderItem.txt', 0);
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +21,7 @@
 	<div class="main">
 		<div class="content">
 			<div class="page_header">
-				<a>LOGOUT</a>
+				<a href="logout.php">LOGOUT</a>
 				<div class="page_header_content">
 					<h1>MY ACCOUNT</h1>
 					<p><?php echo("Welcome back, " . $user["name"] ."!")?></p>
