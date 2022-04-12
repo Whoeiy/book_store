@@ -1,0 +1,243 @@
+body{
+	background-color: rgb(229,229,229);
+	width: 100%;
+	height: 100%;
+	font-family: Fredoka;
+
+}
+.bar{
+	background: #F5F5F5;
+	text-align:center
+}
+#d2 {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color:#F5F5F5;
+	overflow: hidden;
+	top: 0; 
+	
+}
+li {
+	float: right;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+}
+
+.bookinfo{
+	margin: 20px;
+
+}
+.img{
+	float:left;
+	position: absolute;
+	margin: 90px;
+	margin-left: 150px;
+	overflow: hidden;
+	width:20%;
+}
+.des{
+	float: right;
+	width: 50%;
+	margin: 70px;
+	overflow: hidden;
+}
+
+.price{
+	float: left;
+	padding-top: 100px;
+	width: 90%;
+}
+.bookinfo input{
+	border-radius: 20px;width: 120px;height: 35px;
+	background-color: black;
+	color: white;
+	border: black;
+}
+.total input{
+	border-radius: 20px;width: 120px;height: 35px;
+	background-color: black;
+	color: white;
+	border: black;
+}
+
+textarea{
+	background-color: transparent;
+	border-radius: 10px;
+	color: gray;
+}
+
+.ordernote{
+	padding-left: 150px;
+}
+
+.shipping{
+	padding-left: 150px;
+	padding-bottom: 150px;
+}
+
+select{
+	width: 250px;
+	height: 45px;
+	border-radius: 10px;
+}
+.shipping input{
+	width: 250px;
+	height: 45px;
+	border-radius: 10px;
+	border-width: 1px;
+}
+
+
+
+p{
+	color:grey;
+}
+
+
+
+
+.Footer {
+    font-size:1vw;
+    bottom: 50px;
+    width:100%;
+    float: left;
+    background:rgb(243,243,243);
+
+}
+
+.Footer_item{
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 100px;
+    position: relative;
+
+}
+
+#Footer_Copyright{
+    bottom: 0px;
+    width: 100%;
+    left: 50%;
+    font-size:1vw;
+
+    float: left;
+}
+
+.Footer_item{
+    float: left;
+    padding-top: 60px;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+
+#Footer_Subscirbe{
+    padding-left:100px;
+    position: relative;
+    width:20%;
+    　　}
+#Footer_Support{
+    position: relative;
+    padding-left:60px;
+    width:20%;
+}
+#Footer_Info{
+    position: relative;
+    padding-left:35px;
+    width:30%;
+}
+.Footer_Ins{
+    color:grey;
+}
+
+.container {
+    min-height:100%;
+    height: auto;
+    margin: 0%;
+
+    bottom:0px;
+
+}
+
+.FormBox{
+    width:100%;
+    margin:100px auto 0px auto;
+    text-align: center;
+    padding-bottom: 550px;
+
+}
+
+
+.Form-Input{
+    background: rgb(243,243,243);
+    border-radius: 7px;
+    font-size: 16px;
+    margin: 9px auto;
+    text-align: left;
+    padding-top: 14px;
+    padding-right: 180px;
+    padding-bottom: 14px;
+    padding-left:10px;
+
+}
+#subemail{
+    padding-right: 50px;
+    position: relative;
+}
+
+.Submit_Botton{
+    border-radius: 25px;
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 13px 130px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 10px auto;
+
+}
+#subscribesub{
+    padding: 13px 40px;
+
+}
+.Form_Hint{
+    width: 300px;
+    margin: auto;
+    text-align: center;
+
+}
+.Hint{
+    float:left;
+    margin: 10px;
+    position: relative;
+}
+.Link{
+    float:left;
+    margin: 10px 2px;
+    text-decoration: none;
+    color:black;
+    position: relative;
+}
+.Link1{
+    text-decoration: none;
+    color:grey;
+    position: relative;
+}
+.Linklist__Item{
+    list-style:none;
+    padding-bottom: 14px;
+    text-decoration: none;
+    color:black;
+
+}
+#Footer_img{
+    position: center;
+
+}

@@ -1,0 +1,147 @@
+
+body{
+margin:0;
+background-color:rgb(229,229,229);
+font-family: Fredoka; 
+  }
+.Footer_Ins{
+color:grey;
+}
+  
+.container { 
+ min-height:100%; 
+ height: auto; 
+ margin: 0;
+ position: relative; 
+ bottom:0px;
+
+} 
+
+#d2 { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    width: 100%; 
+    overflow: hidden; 
+    background-color:#F5F5F5; 
+    overflow: hidden; 
+    position: fixed; 
+    top: 0;  
+z-index:99; 
+} 
+
+#d2 li { 
+float: right; 
+} 
+
+
+#d2 li a { 
+    display: block; 
+    color: white; 
+    text-align: center; 
+    text-decoration: none; 
+} 
+
+.FormBox{
+width:100%;
+margin:100px auto 0px auto;
+text-align: center;
+padding-bottom: 550px;
+}
+
+
+.Form-Input{
+  background: transparent;
+  border-radius: 7px;
+  font-size: 16px;
+  margin: 9px auto;
+  text-align: left;
+  padding-top: 14px;
+  padding-right: 180px;
+  padding-bottom: 14px;
+  padding-left:10px; 
+  }
+  #subemail{
+  padding-right: 50px;
+  }
+
+.Submit_Botton{
+	font-family: Fredoka; 
+  border-radius: 25px;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 13px 130px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 10px auto;
+}
+#subscribesub{
+  padding: 13px 40px;
+}
+.Form_Hint{
+  width: 200px;
+  margin: auto;
+  text-align: center;
+}
+.Hint{
+   float:left;
+   margin: 10px;
+  }
+.Link{ 
+   float:left;
+    margin: 10px 2px;
+	text-decoration: none;
+	color:black;
+  }
+  .Link1{ 
+	text-decoration: none;
+	color:grey;
+  }
+  .Linklist__Item{
+   list-style:none;
+	padding-bottom: 14px;
+	text-decoration: none;
+	color:black;
+  }
+.Footer { 
+position: absolute; 
+bottom: 0px; 
+width:100%; 
+height: 430px;
+background: rgb(246,246,246); 
+ } 
+ 
+.Footer_item{
+float: left;
+padding-top: 60px; 
+}
+
+#Footer_Support{
+padding-left:60px;
+width:20%; 
+}
+
+#Footer_Subscirbe{
+padding-left:100px;
+width:20%; 
+}
+
+#Footer_Info{
+padding-left:35px;
+width:20%; 
+}
+
+#logo{
+padding-left:0;
+padding-top:90px;
+width:230px;}
+
+#Footer_Copyright{
+
+position: absolute;
+bottom: 0px;
+left: 50%;
+transform: translate(-50%, -50%);
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" /> 
+<link rel="stylesheet" type="text/css" href="../css/login.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka"> 
+
+<title>Login Account</title>
+
+</head>
+
+<body>
+
+ 
+
+
+   <div class="container">
+
+ <div class="header">
+     <ul id="d2" style="width: 100%; font-size: 1vw;"> 
+ 
+    <li><a href="ShoppingCart.html"><img src="../img/Cart.png" width="50" height="50"></a></li> 
+    <li><a href="account.html"><img src="../img/login.png" width="50" height="50"></a></li> 
+ 
+<li style="float:left"><a href="MainPage.html"><img src="../img/logo.png" height="50" > </a> </li> 
+</ul> 
+</div>
+   
+    <div class="FormBox">
+	<form method="post" action="login.php" class="login_account" accept-charset="UTF-8">
+          <h1 class="Form_Title">Login</h1>
+          <p class="Form_Ins">Please enter your e-mail and password:</p>
+	<div class="Form-Item">
+      <input type="email" class="Form-Input" id="email" required="required" placeholder="Email" name="email">
+    </div>
+    <div class="Form-Item">
+      <input type="password" class="Form-Input" id="pwd" required="required" placeholder="Password" name="pwd">
+    </div>
+    <button type="submit" class="Submit_Botton" id="loginsubmit">Login</button>
+
+	 <div class="Form_Hint">
+	 <p class="Hint">Don't have an account?</p><a href="register.html" class="Link">Create one</a></div>
+	</form>
+	</div>
+
+	
+	
+	<div class="Footer">
+	<div class="Footer_item" id="Footer_Subscirbe">
+	<form class="subscribe" accept-charset="UTF-8">
+	     <h2 class="Footer_Title">Updates</h1>
+         <p class="Footer_Ins">Sign up for product teasers, deals, and more</p>
+      <div class="form-item">
+      <input type="email" class="Form-Input" id="subemail" required="required" placeholder="Enter your email" name="subemail">
+    </div>
+    <button type="submit" class="Submit_Botton" id="subscribesub">Subscribe</button>
+	</div>
+	
+    <div class="Footer_item" id="Footer_Support">
+	<h2 class="Footer_Title">Support</h1>
+	<a href="mailto:support@bookstore.com" class="Link1">support@bookstore.com</a>
+	</div>
+	<div class="Footer_item" id="Footer_Info">
+	<h2 class="Footer_Title">Info</h1>
+	  <li class="Linklist__Item">
+                        <a href="" class="Link1">Shipping Policy</a>
+                      </li><li class="Linklist__Item">
+                        <a href="" class="Link1">Return Policy</a>
+                      </li><li class="Linklist__Item">
+                        <a href="/pages/terms-and-conditions" class="Link1">Terms and Conditions</a>
+                      </li><li class="Linklist__Item">
+                        <a href="/pages/privacy-policy" class="Link1">Privacy Policy</a>
+                      </li></ul>
+	</div>
+	
+	 <div class="Footer_item" id="Footer_logo">
+	    <img src="../img/logo.png" id="logo">
+	</div>
+	
+	
+     <div id="Footer_Copyright">
+	<a href="www.bookstore.com" class="Link">© BOOKSTORE POWERED BY GOZILLA</a>
+	</div>
+	</div>
+	
+	</div>
+
+
+</body>
+
+</html>

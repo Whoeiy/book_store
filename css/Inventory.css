@@ -1,0 +1,251 @@
+html, body{
+    background-color: rgb(229,229,229);
+    width: 100%;
+    height: 100%;
+    font-size:1vw;
+    font-family: Fredoka;
+
+}
+
+#d2 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color:#F5F5F5;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    z-index:99;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+.button_bookstoreage{
+    font-size:1vw;
+    width:100%;
+}
+
+#cart{
+    font-size:1vw;
+}
+
+.inventory{
+    float:left;
+    width:70%;
+    padding: 20px;
+    padding-left: 100px;
+    margin-bottom: 100px;
+    position: absolute;
+
+
+}
+.intro {
+    float: right;
+    width: 30%;
+    padding-top: 90px;
+    padding-right: 100px;
+    font-size:1vw;
+}
+
+.bookinfo{
+    margin: 10px;
+    height: 550px;
+    font-size:1vw;
+
+}
+.bl{
+
+    width: 100%;
+
+    float: left;
+}
+.bookinformation2{
+    height:600px;
+    width: 30%;
+    float: right;
+    padding-right: 10px;
+    text-align: justify;
+    font-size:1vw;
+
+}
+.bookinformation1{
+    height:600px;
+    width: 40%;
+    float: left;
+    padding-left: 100px;
+    text-align: justify;
+    font-size:1vw;
+
+}
+h2{
+    color:rgb(93,93,93);
+}
+.d6{
+
+    text-align: left;
+    font-size: 1vw;
+}
+.Footer {
+    font-size:1vw;
+    bottom: 50px;
+    width:100%;
+    float: left;
+    background:rgb(243,243,243);
+
+}
+
+.Footer_item{
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 100px;
+    position: relative;
+
+}
+
+#Footer_Copyright{
+    bottom: 0px;
+    width: 100%;
+    left: 50%;
+    font-size:1vw;
+
+    float: left;
+}
+
+.Footer_item{
+    float: left;
+    padding-top: 60px;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+
+#Footer_Subscirbe{
+    padding-left:100px;
+    position: relative;
+    width:20%;
+    　　}
+#Footer_Support{
+    position: relative;
+    padding-left:60px;
+    width:20%;
+}
+#Footer_Info{
+    position: relative;
+    padding-left:35px;
+    width:30%;
+}
+.Footer_Ins{
+    color:grey;
+}
+
+.container {
+    min-height:100%;
+    height: auto;
+    margin: 0%;
+
+    bottom:0px;
+
+}
+
+.FormBox{
+    width:100%;
+    margin:100px auto 0px auto;
+    text-align: center;
+    padding-bottom: 550px;
+
+}
+
+
+.Form-Input{
+    background: rgb(243,243,243);
+    border-radius: 7px;
+    font-size: 16px;
+    margin: 9px auto;
+    text-align: left;
+    padding-top: 14px;
+    padding-right: 180px;
+    padding-bottom: 14px;
+    padding-left:10px;
+
+}
+.Form-Input2{
+    background: rgb(243,243,243);
+    border-radius: 7px;
+    font-size: 16px;
+    margin: 4px auto;
+    text-align: left;
+    padding-top: 6px;
+    padding-right: 140px;
+    padding-bottom: 7px;
+    padding-left:7px;
+
+}
+#subemail{
+    padding-right: 50px;
+    height: 20px;
+    position: relative;
+}
+#subbook{
+    font-size:1vw;
+    position: relative ;
+}
+.Submit_Botton{
+    border-radius: 25px;
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 13px 130px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 10px auto;
+
+}
+#subscribesub{
+    padding: 13px 40px;
+
+}
+.Form_Hint{
+    width: 300px;
+    margin: auto;
+    text-align: center;
+
+}
+.Hint{
+    float:left;
+    margin: 10px;
+    position: relative;
+}
+.Link{
+    float:left;
+    margin: 10px 2px;
+    text-decoration: none;
+    color:black;
+    position: relative;
+}
+.Link1{
+    text-decoration: none;
+    color:grey;
+    position: relative;
+}
+.Linklist__Item{
+    list-style:none;
+    padding-bottom: 14px;
+    text-decoration: none;
+    color:black;
+
+}
+#Footer_img{
+    position: center;
+
+}

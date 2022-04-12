@@ -1,0 +1,281 @@
+body {
+	margin: 0;
+	height: 100%;
+	background-color: rgb(229,229,229);
+	font-family: Fredoka;
+}
+
+html {
+	height: 100%
+}
+
+input, button {
+	font-family: Fredoka;
+}
+
+.nav {
+	width: 100%;
+	display: inline-block;
+	margin-bottom: 20px;
+}
+
+#d2 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color:#F5F5F5;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    z-index:99;
+}
+
+#d2 li {
+    float: right;
+}
+
+#d2 li a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.main {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 300px;
+}
+
+.content {
+	width: 1261px;
+}
+
+.page_header {
+	width: 80%;
+	text-align: left;
+	margin: 50px 0;
+	padding-left: 40px;
+}
+
+.page_content {
+	display: flex;
+	justify-content: left;
+	width: 100%;
+	padding-left: 40px;
+}
+
+.section_header {
+	font-size: 12px;
+	border-bottom: 1px solid;
+	color: gray;
+}
+
+.orders {
+	width: 770px;
+	margin-right: 40px;
+}
+
+.order_item {
+	width: 730px;
+	height: 180px;
+	display: flex;
+	justify-content: left;
+	margin: 0 20px;
+	border-bottom: 1px solid;
+	border-color: lightgray;
+	padding-bottom: 10px;
+}
+
+.book_img {
+	width: 120px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.book_img > img {
+	width: 100%;
+
+}
+
+
+.item_detail {
+	margin-left: 30px;
+	width: 600px;
+}
+
+.item_detail > p {
+	margin: 10px 0;
+	color: gray;
+	font-size: 12px;
+}
+
+#item_name, #order_price {
+	color: black;
+	font-weight: bold;
+	font-size: 27px;
+}
+
+/* address */
+
+.address {
+	width: 290px;
+}
+
+
+#edit_addr {
+	background-color: black;
+	color: white;
+	width: 200px;
+	height: 50px;
+	border-radius: 30px;
+	border: none;
+	margin-top: 40px;
+}
+
+
+/* Footer */
+
+.Footer {
+    font-size:1vw;
+    bottom: 50px;
+    width:100%;
+    float: left;
+    background:rgb(243,243,243);
+
+}
+
+.Footer_item{
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 100px;
+    position: relative;
+
+}
+
+#Footer_Copyright{
+    bottom: 0px;
+    width: 100%;
+    left: 50%;
+    font-size:1vw;
+
+    float: left;
+}
+
+.Footer_item{
+    float: left;
+    padding-top: 60px;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+
+#Footer_Subscirbe{
+    padding-left:100px;
+    position: relative;
+    width:20%;
+    　　}
+#Footer_Support{
+    position: relative;
+    padding-left:60px;
+    width:20%;
+}
+#Footer_Info{
+    position: relative;
+    padding-left:35px;
+    width:30%;
+}
+.Footer_Ins{
+    color:grey;
+}
+
+.container {
+    min-height:100%;
+    height: auto;
+    margin: 0%;
+
+    bottom:0px;
+
+}
+
+.FormBox{
+    width:100%;
+    margin:100px auto 0px auto;
+    text-align: center;
+    padding-bottom: 550px;
+
+}
+
+.Form-Input{
+    background: rgb(243,243,243);
+    border-radius: 7px;
+    font-size: 16px;
+    margin: 9px auto;
+    text-align: left;
+    padding-top: 14px;
+    padding-right: 180px;
+    padding-bottom: 14px;
+    padding-left:10px;
+
+}
+#subemail{
+    padding-right: 50px;
+    position: relative;
+}
+
+.Submit_Botton{
+    border-radius: 25px;
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 13px 130px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 10px auto;
+
+}
+#subscribesub{
+    padding: 13px 40px;
+
+}
+.Form_Hint{
+    width: 300px;
+    margin: auto;
+    text-align: center;
+
+}
+.Hint{
+    float:left;
+    margin: 10px;
+    position: relative;
+}
+.Link{
+    float:left;
+    margin: 10px 2px;
+    text-decoration: none;
+    color:black;
+    position: relative;
+}
+.Link1{
+    text-decoration: none;
+    color:grey;
+    position: relative;
+}
+.Linklist__Item{
+    list-style:none;
+    padding-bottom: 14px;
+    text-decoration: none;
+    color:black;
+
+}
+#Footer_img{
+    position: center;
+
+}
