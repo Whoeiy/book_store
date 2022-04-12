@@ -1,3 +1,9 @@
+<!--    开始session，检查是否有姓名如果有-->
+<!--    1。小人跳转登陆account，显示欢迎语句-->
+<!--    2。如果没有小人跳转login-->
+<?php session_start(); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,45 +20,43 @@
 </head>
 <body>
 
-
+<!--导航栏-->
 <ul id="d2">
-    <li style="float:left"><a href="MainPage.html"><img src="../img/logo.png" height="50"> </a></li>
+    <li style="float:left"><a href="MainPage.php"><img src="../img/logo.png" height="50"> </a></li>
 
-    <?php session_start(); ?>
     <?php
-//    var $src;
-    if (isset($_SESSION['lname'])) {  // Checking whether the session is already there or not if
+    //    var $src;
+//        session_destroy();
+    if ($_SESSION['lname']) {  // Checking whether the session is already there or not if
         // true then header redirect it to the home page directly
 
-        echo 'Welcome! &nbsp' . $_SESSION['lname'] . '';
+        echo 'Welcome! &nbsp' . $_SESSION['lname'];
         $src = "account.php";
-    }else{
-        $src = "login.php";
+    } else {
+        $src = "login.html";
     }
     ?>
-
-    <!-- <li><a href="#More"><img src="../img/More.png" width="50" height="50"></a></li> -->
     <li><a href="ShoppingCart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
-    <!-- <li><a href="#Search"><img src="../img/search.png" width="50" height="50"></a></li> -->
-
-<!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
+    <!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
     <?php
-    echo "<li><a href=   $src ><img src='../img/login.png' width='50' height='50'></a></li>"
+    echo "<li><a href= $src ><img src='../img/login.png' width='50' height='50'></a></li>"
     ?>
-
-
 </ul>
 
 
+
+<!--开头标题-->
 <header class="tm-welcome-section">
     <h2 class="col-12 text-center tm-section-title">Welcome to MiniBookStore!</h2>
     <p class="col-12 text-center">Here are some selected book we recommend!</p>
 </header>
 
+
+
 </div>
 <div id="tm-gallery-page-pizza" class="tm-gallery-page">
     <?php
-    $file = 'book.txt';
+    $file = '../dataFile/book.txt';
     $content = file_get_contents($file);
     $array = explode("\n", $content);
 
@@ -90,6 +94,7 @@
         echo "    </article> ";
     }
 
+//    需要在这里更改
     bookItem($array[0][0], $array[0][1], $array[0][2], "../php/ProductDetails.php?new=0");
     bookItem($array[1][0], $array[1][1], $array[1][2], "../php/ProductDetails.php?new=1");
     bookItem($array[2][0], $array[2][1], $array[2][2], "../php/ProductDetails.php?new=2");
@@ -102,6 +107,7 @@
     ?>
 
 
+<!--    底部contactus-->
     <div class="Footer">
         <div class="Footer_item" id="Footer_Subscirbe">
             <form class="subscribe" accept-charset="UTF-8">
@@ -130,7 +136,7 @@
 
         </div>
         <div class="Footer_item" id="Footer_img">
-            <a href="MainPage.html"> <img src="../img/logo.png" width="200px"></a>
+            <a href="MainPage.php"> <img src="../img/logo.png" width="200px"></a>
         </div>
         <div id="Footer_Copyright">
             <a href="www.bookstore.com" class="Link" style="padding-left: 40%">© BOOKSTORE POWERED BY GOZILLA</a>
