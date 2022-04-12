@@ -11,6 +11,7 @@ while (!feof($file)) {
     if (trim($array[2]) == $_POST['email'] && trim($array[3]) == $_POST['pwd']) {
         $lname = trim($array[1]);
         $good = true;
+        $userId = $array[4];
         break;
     }
 }
@@ -20,6 +21,7 @@ if ($good) {
     session_start();
     $_SESSION['email'] = $email;
     $_SESSION['lname'] = $lname;
+    $_SESSION['userId'] = $userId;
     echo '<script type="text/javascript"> window.open("MainPage.php","_self");</script>';
 
 } else {
