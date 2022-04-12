@@ -87,7 +87,9 @@ for ($i = 0; $i < count($bookarray); $i++) {
     //    $cart = implode(",", $book);
     function addBook()
     {
+
 //        echo "<h1>hahaha</h1>";
+
         $cart = "XXX" . "," . $_GET['new'] . "," . "4" . "\r\n";
         $file = fopen("../dataFile/cart.txt", "at");
         fputs($file, $cart);
