@@ -23,7 +23,7 @@
 
 function getItems($userid) {
 	$items = array();
-	$fp = fopen('./cart.txt', 'r');
+	$fp = fopen('../dataFile/cart.txt', 'r');
 	while(!feof($fp)){
 		$line = fgets($fp);
 		$arr = explode(',', $line);
@@ -43,7 +43,8 @@ function getItems($userid) {
 // $cart = explode("," , $cartarray[0]);
 // }
 
-$cartarray = getItems("1");
+$cartarray = getItems("1");		// parameter: userid
+$item_price = array();
 
 if($cartarray == null){
 	echo "
@@ -59,24 +60,26 @@ if($cartarray == null){
 				<div class = 'img'>
 					<img src = '
 			";
-			echo $cart[0];
+			echo $cart[2];
 			echo "
 			' style='max-width:100%;'' width='200px' alt='BUY IT!''>
 				</div>
 				<div class = 'des'>
 					<h3>";
-			echo $cart[1];
+			echo $cart[4];
 			echo "</h3>
 					<div style='overflow: hidden;''>
 						<p style='color: gray;float: left;''>Paperback</p>
 						<h2 style='float: right;''>HKD ";
-			echo $cart[3];
+			$price = doubleval($cart[5]) * intval($cart[6]);
+			$item_price[] = $price;
+			echo $price;
 			echo "</h2>
 					</div>
 	
 					
 					<a href='shoppingcart2.php'><input type='submit' value='ADD ONE' style='float:right;' /></a>
-					<p style='color: gray;float: left;margin-top: 0px;''>Quantity:1</p>
+					<p style='color: gray;float: left;margin-top: 0px;''>Quantity:" . $cart[6] . "</p>
 					
 				</div>
 			</div>
@@ -94,7 +97,7 @@ if($cartarray == null){
 			</div>
 			<div class = 'total' style='float: right;''>
 				<h1>Total:&nbsp;&nbsp;HKD ";
-    echo $cart[3];
+    echo array_sum($item_price);
     echo "
 			</h1>
 				<a href='information.php'><input type='button' value='CHECKOUT' style='float:right;' /></a>

@@ -7,3 +7,9 @@ XXX,0,2
 XXX,0,234324
 XXX,0,234324
 XXX,0,5
+XXX,0,5
+XXX,0,4
+XXX,0,4
+XXX,0,4
+1,0,../img/sample3.jpeg,Breath The New Science of a Lost Art,James Nestor,89.72,2
+1,0,../img/sample4.jpeg,Breath The New Science of a Lost Art,James Nestor,89.72,1
