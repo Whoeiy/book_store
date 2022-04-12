@@ -21,61 +21,68 @@
 
 <?php
 
-$data = file("../dataFile/cart.txt");
-
-print_r($data);
-
-for ($i = 0; $i < sizeof($data); $i++) {
-    $cartarray[$i] = "$data[$i]";
-//        echo $cartarray[$i];
-//        break;
+function getItems($userid) {
+	$items = array();
+	$fp = fopen('./cart.txt', 'r');
+	while(!feof($fp)){
+		$line = fgets($fp);
+		$arr = explode(',', $line);
+		if($userid == $arr[0]){		// 查询userid对应的cart
+			$items[] = $line;
+		}	
+	}
+	fclose($fp);
+	return $items;
 }
-for ($i = 0; $i < count($cartarray); $i++) {
-    $cart = explode(",", $cartarray[$i]);
-//    echo "$cart";
-}
-print_r($cart);
 
+// $data = file("cart.txt");
+// for ($i=0; $i<sizeof($data); $i++) {
+// $cartarray[$i]= "$data[$i]";
+// }
+// for ($i=0; $i<count($cartarray); $i++) {
+// $cart = explode("," , $cartarray[0]);
+// }
 
-// 如果没有cart 表中没有此人信息，返回空购物车信息
-if ($cart[0] == null) {
-    echo "
+$cartarray = getItems("1");
+
+if($cartarray == null){
+	echo "
 	<h3 style='text-align:center;color:gray;'>Your shopping cart is empty</h3>
 	<br><br><br><br><br><br><br>
 	";
-} else {
-
-    echo "
-	<div class = 'bookinfo'>
-		<div class = 'img'>
-			<img src = '
-	";
-    // 第一个信息为图片信息
-    echo $cart[0];
-    echo "
-	' style='max-width:100%;'' width='200px' alt='BUY IT!''>
-		</div>
-		<div class = 'des'>
-			<h3>";
-    //第二个信息为
-    echo $cart[1];
-    echo "</h3>
-			<div style='overflow: hidden;''>
-				<p style='color: gray;float: left;''>Paperback</p>
-				<h2 style='float: right;''>HKD ";
-    echo $cart[3];
-    echo "</h2>
+}else{
+	for ($i=0; $i<count($cartarray); $i++) {
+		$cart = explode("," , $cartarray[$i]);
+		echo "
+		<div class = 'bookinfo'>
+			<div class = 'bookitem'>
+				<div class = 'img'>
+					<img src = '
+			";
+			echo $cart[0];
+			echo "
+			' style='max-width:100%;'' width='200px' alt='BUY IT!''>
+				</div>
+				<div class = 'des'>
+					<h3>";
+			echo $cart[1];
+			echo "</h3>
+					<div style='overflow: hidden;''>
+						<p style='color: gray;float: left;''>Paperback</p>
+						<h2 style='float: right;''>HKD ";
+			echo $cart[3];
+			echo "</h2>
+					</div>
+	
+					
+					<a href='shoppingcart2.php'><input type='submit' value='ADD ONE' style='float:right;' /></a>
+					<p style='color: gray;float: left;margin-top: 0px;''>Quantity:1</p>
+					
+				</div>
 			</div>
+		</div>";
+	}
 
-			
-			<a href='shoppingcart2.php'><input type='submit' value='ADD ONE' style='float:right;' /></a>
-			<p style='color: gray;float: left;margin-top: 0px;''>Quantity:1</p>
-			
-		</div>
-
-
-	</div>
-	";
     echo "
     <div class = 'price'>
 		<hr>
