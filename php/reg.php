@@ -1,5 +1,5 @@
 <?php
-$file=fopen("user.txt","r");
+$file=fopen("../dataFile/user.txt","r");
     $finduser = false;
     while(!feof($file))
     {
@@ -25,7 +25,7 @@ $file=fopen("user.txt","r");
     }
     else
     {
-        $file = fopen("user.txt", "at");
+        $file = fopen("../dataFile/user.txt", "at");
         fputs($file,$_POST["fname"].",".$_POST["lname"].",".$_POST["email"].",".$_POST["pwd"]."\r\n");
         fclose($file);
      

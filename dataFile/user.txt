@@ -5,8 +5,4 @@ aa,bb,55556@qq.com,24789
 aa,bb,536666@qq.com,24789
 ww,ww,1169749932@qq.com,234
 Jennifer,Yu,jenniferyue@outlook.com,123456
-hanbin,li,929580807@qq.com,1
-hanbin,li,929580807@qq.com,1
-hanbin,li,929580807@qq.com,1
 hanbin,li,929580807@qq.com,111
-hanbin,li,929580807@qq.com,11111
