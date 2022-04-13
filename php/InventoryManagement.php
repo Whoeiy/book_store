@@ -21,17 +21,7 @@ $book4 = explode("," , $bookarray[$bookid]);
 }
 
 ?>
-<?php
-$bookid=5;
-$data = file("book.txt");
-for ($i=0; $i<sizeof($data); $i++) {
-$bookarray[$i]= "$data[$i]";
-}
-for ($i=0; $i<count($bookarray); $i++) {
-$book5 = explode("," , $bookarray[$bookid]);
-}
 
-?>
 <?php
 $bookid=3;
 $data = file("book.txt");
@@ -94,16 +84,22 @@ $book0 = explode("," , $bookarray[$bookid]);
     <div class="inventory">
     <br><br><br><br>
 
-   					<h2>Inventory&nbsp; &nbsp;&nbsp; &nbsp;<select><option>Page1</option></select></h2><br>
-   					<form action="InventoryManagement.php" method="post" >
-   					<span>1.<?php echo"$book0[1]"?>: <input type="text" style="width:30px; " name = "book0" value=" <?php echo"$book0[4]" ?>"><br><br>
-   					<span>2.<?php echo"$book1[1]"?>: </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" style="width:30px; "name="book1" value=" <?php echo"$book1[4]" ?>"> <br><br>
-   					<span>3.<?php echo"$book2[1]"?>:  </span>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" name="book2"style="width:30px; " value=" <?php echo"$book2[4]" ?>"> <br><br>
-                    <span>4.<?php echo"$book3[1]"?>:  </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<input type="text" style="width:30px; "  name = "book3"value=" <?php echo"$book3[4]" ?>"><br><br>
-   					<span>5.<?php echo"$book4[1]"?>:  </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;<input type="text" style="width:30px; " name="book4" value=" <?php echo"$book4[4]" ?>"> <br><br>
-   					<span>6.<?php echo"$book5[1]"?>:  </span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <input type="text" name="book5" style="width:30px; " value=" <?php echo"$book5[4]" ?>"> <br><br>
- <p>Revised stock levels are<?php echo $_POST["book0"]; ?>，<?php echo $_POST["book1"]; ?> ，<?php echo $_POST["book2"]; ?>，<?php echo $_POST["book3"]; ?>，<?php echo $_POST["book4"]; ?>，<?php echo $_POST["book5"]; ?></p>
-     </div>
+   				<h2>Inventory&nbsp; &nbsp;&nbsp;<select><option>Page1</option></select></h2><br>
+                   					<form action="InventoryManagement.php" method="post" >
+                   					<label for="inbook1" class="label1class">1.<?php echo"$book0[1]"?>:</label> <input type="text" id="inbook1" style="width:30px; " name = "book0" value=" <?php echo"$book0[4]" ?>"><br><br>
+                   					<label for="inbook2" class="label1class" >2.<?php echo"$book1[1]"?>:</label> <input type="text"  id="inbook2" style="width:30px; "name="book1" value=" <?php echo"$book1[4]" ?>"><br><br>
+                   					<label for="inbook3"  class="label1class">3.<?php echo"$book2[1]"?>:</label><input type="text"  id="inbook3" name="book2"style="width:30px; " value=" <?php echo"$book2[4]" ?>"><br><br>
+                                    <label for="inbook4" class="label1class" >4.<?php echo"$book3[1]"?>:</label> <input type="text" id="inbook4" style="width:30px; "  name = "book3"value=" <?php echo"$book3[4]" ?>"><br><br>
+                   					<label for="inbook5"  class="label1class">5.<?php echo"$book4[1]"?>:</label><input type="text" id="inbook5" style="width:30px; " name="book4" value=" <?php echo"$book4[4]" ?>"> <br><br>
+                   					<label for="inbook6"  class="label1class" >6.<?php echo $_POST["bookname"];?>:</label><input type="text" id="inbook6" name="book5" style="width:30px; "> <br><br>
+                 <p>Revised stock levels are<?php echo $_POST["book0"]; ?>&nbsp; &nbsp;
+                 <?php echo $_POST["book1"]; ?> &nbsp; &nbsp;
+                 <?php echo $_POST["book2"]; ?>&nbsp; &nbsp;
+                 <?php echo $_POST["book3"]; ?>&nbsp; &nbsp;
+                 <?php echo $_POST["book4"]; ?>&nbsp; &nbsp;
+                 <?php echo $_POST["book5"]; ?>&nbsp;
+                 <?php echo $_POST["bookstoreage"]; ?> </p>
+                        </div>
     <div class="intro">
 
         <h2>New books on the shelves</h2>
@@ -131,29 +127,40 @@ $book1[4]=$_POST["book1"];
 $book3[4]=$_POST["book3"];
 $book2[4]=$_POST["book2"];
 $book4[4]=$_POST["book4"];
-$book5[4]=$_POST["book5"];
+
 
 $new[0] = implode($book0,",");
 $new[1] = implode($book1,",");
 $new[2] = implode($book2,",");
 $new[3] = implode($book3,",");
 $new[4] = implode($book4,",");
+
+
+
+$book5[0]=$_POST["bookaddress"];
+
+$book5[1]=$_POST["bookname"];
+$book5[2]=$_POST["bookauthor"];
+$book5[3]=$_POST["bookprice"];
+$book5[4]=$_POST["bookstoreage"];
 $new[5] = implode($book5,",");
-
-
-$book6[0]=$_POST["bookaddress"];
-
-$book6[1]=$_POST["bookname"];
-$book6[2]=$_POST["bookauthor"];
-$book6[3]=$_POST["bookprice"];
-$book6[4]=$_POST["bookstoreage"];
-$new[6] = implode($book6,",");
 
 $newarray=implode($new,"\n");
    $numbytes = file_put_contents('book.txt', $newarray); //如果文件不存在创建文件，并写入内容
 
 ?>
+<?php
+$bookid=5;
+$data = file("book.txt");
+for ($i=0; $i<sizeof($data); $i++) {
+$bookarray[$i]= "$data[$i]";
+}
+for ($i=0; $i<count($bookarray); $i++) {
+$book0 = explode("," , $bookarray[$bookid]);
+}
 
+
+?>
 <div class="Footer"  >
     <div class="Footer_item" id="Footer_Subscirbe" >
         <form class="subscribe" accept-charset="UTF-8">

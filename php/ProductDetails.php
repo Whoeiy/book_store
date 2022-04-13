@@ -13,6 +13,12 @@
 <body>
 
 <?php
+ini_set("auto_detect_line_endings", true);
+
+// Now I can invoke fgets() on files that contain silly \r line endings.
+?>
+
+<?php
 $bookid = $_GET['new'];
 $userid = $_SESSION['userId'];
 $order = array("\r\n", "\n", "\r");
@@ -37,9 +43,38 @@ for ($i = 0; $i < count($bookarray); $i++) {
     <li><a href="shoppingcart.php?quantity=1"><img src="../img/Cart.png" width="50" height="50"></a></li>
     <li><a href="login.html"><img src="../img/login.png" width="50" height="50"></a></li>
 
-    <li style="float:left"><a href="MainPage.php"><img src="../img/logo.png" height="50"> </a></li>
+<ul id="d2">
+<li style="float:left"><a href="MainPage.php"><img src="../img/logo.png" height="50"> </a></li>
 
+<?php
+//    var $src;
+// $_SESSION = array();
+if (isset($_SESSION['lname'])) {  // Checking whether the session is already there or not if
+    // true then header redirect it to the home page directly
+
+    echo 'Welcome! &nbsp' . $_SESSION['lname'];
+    $src = "account.php";
+} else {
+    $src = "login.html";
+}
+?>
+<li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
+<!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
+<?php
+echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50'></a></li>"
+?>
 </ul>
+<!--<ul id="d2" style="width: 100%; font-size: 1vw;">-->
+<!---->
+<!--    <li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>-->
+<!--    <li><a href="login.html"><img src="../img/login.png" width="50" height="50"></a></li>-->
+<!---->
+<!--    <li style="float:left"><a href="MainPage.php"><img src="../img/logo.png" height="50"> </a></li>-->
+<!---->
+<!--</ul>-->
+
+
+
 <!--总布局-->
 <div id="all" style="width: 100%; font-size: 1vw;">
 
@@ -67,45 +102,82 @@ for ($i = 0; $i < count($bookarray); $i++) {
             $link = "../php/ProductDetails.php?new=" . $bookid . "&buy=1";
             echo "<a href='" . $link . "'> <img src='../img/addtocart.png' id='cart' width='180'></a>";
 
-            function getCartById($userid,$bookid){
+
+            function getCartById($userid, $bookid)
+            {
                 // 读写文件
                 $data = file("../dataFile/cart.txt");
+                if(count($data)==0){
+                    return null;
+                }
+
+//                print_r($data);
+
                 for ($i = 0; $i < sizeof($data); $i++) {
                     $array[$i] = "$data[$i]";
-                    // print_r($array[$i])
+
                 }
+//                print_r($array);
+                $newData = array();
                 //book是拆完的书的信息
+                $renew = false;
                 for ($i = 0; $i < count($array); $i++) {
+
                     $cartarray = explode(",", $array[$i]);
-                    if($cartarray[0]==$userid && $cartarray[1] ==$bookid){
-                        return $i."ocajnovnaofejnvj\r";
+
+                    if ($cartarray[0] == $userid && $cartarray[1] == $bookid) {
+                        // 说明一样去最后一个数量元素
+                        $cartarray[6] = $cartarray[6] + 1;
+                        $newrow = $cartarray[0] . "," . $cartarray[1] . "," . $cartarray[2] . "," . $cartarray[3]
+                            . "," . $cartarray[4] . "," . $cartarray[5] . "," . $cartarray[6]."\r";
+                        $newData[$i] = $newrow;
+
+                        $renew = true;
+
+
+                    } else {
+                        $newData[$i] = $array[$i];
+
                     }
+
                 }
-                return null;
+                if ($renew == true) {
+
+                    $newStr = "";
+                    for ($i = 0; $i < count($newData); $i++) {
+
+                        $newStr = $newStr . $newData[$i];
+                    }
+//                    print_r($newStr);
+                    $file = fopen("../dataFile/cart.txt","w");
+                    fwrite($file,$newStr);
+                    fclose($file);
+                    return 1;
+                } else {
+
+                    return null;
+                }
             }
+
             function addBook($userid, $bookid, $url, $bname, $auther, $price)
             {
                 // userid,bookid,img_url, book_name,author,price,number
-                $re = getCartById($userid,$bookid);
+                $re = getCartById($userid, $bookid);
+//                print_r($re);
                 if($re == null){
-                    $cart = $userid . "," . $bookid . "," . $url . "," . $bname . "," . $auther . "," . $price . "," . "1" . "\r\n";
+                    $cart = $userid . "," . $bookid . "," . $url . "," . $bname . "," . $auther . "," . $price . "," . "1" . "\r";
     //                getCartById($userid,$bookid);
 
                     $file = fopen("../dataFile/cart.txt", "at");
                     fputs($file, $cart);
                     fclose($file);
-                }else{
-                    $file = fopen("../dataFile/cart.txt", "at");
-                    fputs($file, $re);
-                    fclose($file);
                 }
-                
+
 
             }
 
-            
-            if (isset($_GET['buy'])) {
 
+            if (isset($_GET['buy'])) {
                 addBook($userid, $bookid, $book[0], $book[1], $book[2], $book[3]);
                 //    找到最后一个元素：书本存货量。设为1，加入用户id来合并 辨别记录
 
@@ -127,7 +199,6 @@ for ($i = 0; $i < count($bookarray); $i++) {
             </h2>
         </div>
     </div>
-
 
 
     <!--    不知道下面这句是干啥的-->
