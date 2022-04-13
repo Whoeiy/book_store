@@ -95,14 +95,22 @@
     }
 
 //    需要在这里更改
-    bookItem($array[0][0], $array[0][1], $array[0][2], "../php/ProductDetails.php?new=0");
-    bookItem($array[1][0], $array[1][1], $array[1][2], "../php/ProductDetails.php?new=1");
-    bookItem($array[2][0], $array[2][1], $array[2][2], "../php/ProductDetails.php?new=2");
-    echo "   </div>  ";
-    echo "   <div id='tm-gallery-page-pizza' class='tm-gallery-page'> ";
-    bookItem($array[3][0], $array[3][1], $array[3][2], "../php/ProductDetails.php?new=3");
-    bookItem($array[4][0], $array[4][1], $array[4][2], "../php/ProductDetails.php?new=4");
-    bookItem($array[5][0], $array[5][1], $array[5][2], "../php/ProductDetails.php?new=5");
+//    print_r(count($array));
+    for($i=0;$i<count($array);$i++){
+        bookItem($array[$i][0], $array[$i][1], $array[$i][2], "../php/ProductDetails.php?new=".$i);
+        if(($i+1)%3==0){
+            echo "   </div>  ";
+            echo "   <div id='tm-gallery-page-pizza' class='tm-gallery-page'> ";
+        }
+    }
+//    bookItem($array[0][0], $array[0][1], $array[0][2], "../php/ProductDetails.php?new=0");
+//    bookItem($array[1][0], $array[1][1], $array[1][2], "../php/ProductDetails.php?new=1");
+//    bookItem($array[2][0], $array[2][1], $array[2][2], "../php/ProductDetails.php?new=2");
+//    echo "   </div>  ";
+//    echo "   <div id='tm-gallery-page-pizza' class='tm-gallery-page'> ";
+//    bookItem($array[3][0], $array[3][1], $array[3][2], "../php/ProductDetails.php?new=3");
+//    bookItem($array[4][0], $array[4][1], $array[4][2], "../php/ProductDetails.php?new=4");
+//    bookItem($array[5][0], $array[5][1], $array[5][2], "../php/ProductDetails.php?new=5");
     echo "   </div>  ";
     ?>
 
