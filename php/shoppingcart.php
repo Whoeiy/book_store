@@ -27,6 +27,7 @@ function getItems($userid) {
 	while(!feof($fp)){
 		$line = fgets($fp);
 		$arr = explode(',', $line);
+		// echo $userid . $arr[0] . "<br>";
 		if($userid == $arr[0]){		// 查询userid对应的cart
 			$items[] = $line;
 		}	
@@ -35,15 +36,8 @@ function getItems($userid) {
 	return $items;
 }
 
-// $data = file("cart.txt");
-// for ($i=0; $i<sizeof($data); $i++) {
-// $cartarray[$i]= "$data[$i]";
-// }
-// for ($i=0; $i<count($cartarray); $i++) {
-// $cart = explode("," , $cartarray[0]);
-// }
-
-$cartarray = getItems($_SESSION["userId"]);		// parameter: userid
+$user = $_SESSION["userId"];
+$cartarray = getItems(trim($user));		// 清除前后空格 & parameter: userid
 $item_price = array();
 
 if($cartarray == null){

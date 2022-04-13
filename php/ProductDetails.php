@@ -76,7 +76,7 @@ for ($i = 0; $i < count($bookarray); $i++) {
                 }
                 //book是拆完的书的信息
                 for ($i = 0; $i < count($array); $i++) {
-                    $cartarray = explode(",", $cartarray[$i]);
+                    $cartarray = explode(",", $array[$i]);
                     if($cartarray[0]==$userid && $cartarray[1] ==$bookid){
                         return $i."ocajnovnaofejnvj\r";
                     }
