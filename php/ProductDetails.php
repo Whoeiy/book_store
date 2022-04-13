@@ -48,20 +48,22 @@ for ($i = 0; $i < count($bookarray); $i++) {
 
 <?php
 //    var $src;
-// $_SESSION = array();
-if (isset($_SESSION['lname'])) {  // Checking whether the session is already there or not if
-    // true then header redirect it to the home page directly
+    // $_SESSION = array();
+    if (isset($_SESSION['lname'])) {  // Checking whether the session is already there or not if
+        // true then header redirect it to the home page directly
 
-    echo 'Welcome! &nbsp' . $_SESSION['lname'];
-    $src = "account.php";
-} else {
-    $src = "login.html";
-}
-?>
-<li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
-<!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
-<?php
-echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50'></a></li>"
+        echo 'Welcome! &nbsp' . $_SESSION['lname'];
+        $src = "account.php";
+        $cart_src = "shoppingcart.php?quantity=1";
+    } else {
+        $src = "login.html";
+        $cart_src = "#";
+    }
+    ?>
+    <li><a href= <?php echo $cart_src; ?>><img src="../img/Cart.png" width="50" height="50"></a></li>
+    <!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
+    <?php
+    echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50'></a></li>"
 ?>
 </ul>
 <!--<ul id="d2" style="width: 100%; font-size: 1vw;">-->
