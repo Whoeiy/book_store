@@ -7,7 +7,7 @@
 
 
 <body>
-<!--    导航栏-->
+<!--导航栏-->
 <ul id="d2">
 
     <li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
@@ -20,13 +20,14 @@
 <h1 style="text-align: center;letter-spacing: 10px;">YOUR CART</h1>
 
 <?php
-
+session_start();
 function getItems($userid) {
 	$items = array();
 	$fp = fopen('../dataFile/cart.txt', 'r');
 	while(!feof($fp)){
 		$line = fgets($fp);
 		$arr = explode(',', $line);
+		// echo $userid . $arr[0] . "<br>";
 		if($userid == $arr[0]){		// 查询userid对应的cart
 			$items[] = $line;
 		}
@@ -35,15 +36,8 @@ function getItems($userid) {
 	return $items;
 }
 
-// $data = file("cart.txt");
-// for ($i=0; $i<sizeof($data); $i++) {
-// $cartarray[$i]= "$data[$i]";
-// }
-// for ($i=0; $i<count($cartarray); $i++) {
-// $cart = explode("," , $cartarray[0]);
-// }
-
-$cartarray = getItems("1");		// parameter: userid
+$user = $_SESSION["userId"];
+$cartarray = getItems(trim($user));		// 清除前后空格 & parameter: userid
 $item_price = array();
 
 if($cartarray == null){
