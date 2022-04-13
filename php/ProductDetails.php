@@ -38,14 +38,39 @@ for ($i = 0; $i < count($bookarray); $i++) {
 ?>
 
 <!--导航栏-->
-<ul id="d2" style="width: 100%; font-size: 1vw;">
 
-    <li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
-    <li><a href="login.html"><img src="../img/login.png" width="50" height="50"></a></li>
+<ul id="d2">
+<li style="float:left"><a href="MainPage.php"><img src="../img/logo.png" height="50"> </a></li>
 
-    <li style="float:left"><a href="MainPage.php"><img src="../img/logo.png" height="50"> </a></li>
+<?php
+//    var $src;
+// $_SESSION = array();
+if (isset($_SESSION['lname'])) {  // Checking whether the session is already there or not if
+    // true then header redirect it to the home page directly
 
+    echo 'Welcome! &nbsp' . $_SESSION['lname'];
+    $src = "account.php";
+} else {
+    $src = "login.html";
+}
+?>
+<li><a href="ShoppingCart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
+<!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
+<?php
+echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50'></a></li>"
+?>
 </ul>
+<!--<ul id="d2" style="width: 100%; font-size: 1vw;">-->
+<!---->
+<!--    <li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>-->
+<!--    <li><a href="login.html"><img src="../img/login.png" width="50" height="50"></a></li>-->
+<!---->
+<!--    <li style="float:left"><a href="MainPage.php"><img src="../img/logo.png" height="50"> </a></li>-->
+<!---->
+<!--</ul>-->
+
+
+
 <!--总布局-->
 <div id="all" style="width: 100%; font-size: 1vw;">
 
