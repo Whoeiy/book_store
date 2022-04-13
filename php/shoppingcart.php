@@ -29,7 +29,7 @@ function getItems($userid) {
 		$arr = explode(',', $line);
 		if($userid == $arr[0]){		// 查询userid对应的cart
 			$items[] = $line;
-		}	
+		}
 	}
 	fclose($fp);
 	return $items;

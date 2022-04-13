@@ -67,26 +67,60 @@ for ($i = 0; $i < count($bookarray); $i++) {
             $link = "../php/ProductDetails.php?new=" . $bookid . "&buy=1";
             echo "<a href='" . $link . "'> <img src='../img/addtocart.png' id='cart' width='180'></a>";
 
-            function getCartById($userid,$bookid){
+
+            function getCartById($userid, $bookid)
+            {
                 // 读写文件
                 $data = file("../dataFile/cart.txt");
                 for ($i = 0; $i < sizeof($data); $i++) {
                     $array[$i] = "$data[$i]";
-                    // print_r($array[$i])
+
                 }
+                $newData = array();
                 //book是拆完的书的信息
+                $renew = false;
                 for ($i = 0; $i < count($array); $i++) {
-                    $cartarray = explode(",", $cartarray[$i]);
-                    if($cartarray[0]==$userid && $cartarray[1] ==$bookid){
-                        return $i."ocajnovnaofejnvj\r";
+
+                    $cartarray = explode(",", $array[$i]);
+
+                    if ($cartarray[0] == $userid && $cartarray[1] == $bookid) {
+                        // 说明一样去最后一个数量元素
+                        $cartarray[6] = $cartarray[6] + 1;
+                        $newrow = $cartarray[0] . "," . $cartarray[1] . "," . $cartarray[2] . "," . $cartarray[3]
+                            . "," . $cartarray[4] . "," . $cartarray[5] . "," . $cartarray[6]."\r";
+                        $newData[$i] = $newrow;
+
+                        $renew = true;
+
+
+                    } else {
+                        $newData[$i] = $array[$i];
+
                     }
+
                 }
-                return null;
+                if ($renew == true) {
+                    $newStr = "";
+                    for ($i = 0; $i < count($newData); $i++) {
+//                        print_r($newData[$i]);
+                        $newStr = $newStr . $newData[$i];
+                    }
+//                    print_r($newStr);
+                    $file = fopen("../dataFile/cart.txt","w");
+                    fwrite($file,$newStr);
+                    fclose($file);
+                    return 1;
+                } else {
+
+                    return null;
+                }
             }
+
             function addBook($userid, $bookid, $url, $bname, $auther, $price)
             {
                 // userid,bookid,img_url, book_name,author,price,number
-                $re = getCartById($userid,$bookid);
+                $re = getCartById($userid, $bookid);
+                print_r($re);
                 if($re == null){
                     $cart = $userid . "," . $bookid . "," . $url . "," . $bname . "," . $auther . "," . $price . "," . "1" . "\r\n";
     //                getCartById($userid,$bookid);
@@ -94,18 +128,13 @@ for ($i = 0; $i < count($bookarray); $i++) {
                     $file = fopen("../dataFile/cart.txt", "at");
                     fputs($file, $cart);
                     fclose($file);
-                }else{
-                    $file = fopen("../dataFile/cart.txt", "at");
-                    fputs($file, $re);
-                    fclose($file);
                 }
-                
+
 
             }
 
-            
-            if (isset($_GET['buy'])) {
 
+            if (isset($_GET['buy'])) {
                 addBook($userid, $bookid, $book[0], $book[1], $book[2], $book[3]);
                 //    找到最后一个元素：书本存货量。设为1，加入用户id来合并 辨别记录
 
@@ -127,7 +156,6 @@ for ($i = 0; $i < count($bookarray); $i++) {
             </h2>
         </div>
     </div>
-
 
 
     <!--    不知道下面这句是干啥的-->
