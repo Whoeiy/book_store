@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +14,11 @@
 
 <?php
 $bookid = $_GET['new'];
+$userid = $_SESSION['userId'];
+$order = array("\r\n", "\n", "\r");
+$replace = '';
+$userid = str_replace($order, $replace, $userid);
+
 $data = file("../dataFile/book.txt");
 //在book。txt 中逐行读数据，将读到的数据存入到data数组中，每个元素是一行并转化为字符串
 for ($i = 0; $i < sizeof($data); $i++) {
@@ -48,6 +54,7 @@ for ($i = 0; $i < count($bookarray); $i++) {
             <!--        书名-->
             <h1><?php echo $book[1] ?></h1>
             <!--        作者-->
+
             <h2><?php echo $book[2] ?></h2>
             <h2>Paperback (20 Aug 2013)</h2>
             <!--        价格-->
@@ -57,11 +64,57 @@ for ($i = 0; $i < count($bookarray); $i++) {
             <!--            <button onclick=""><img src="../img/addtocart.png" id="cart" width="180"></button>-->
             <!--            <a href="" onclick="addBook()"> <img src="../img/addtocart.png" id="cart" width="180"></a>-->
             <?php
-            $link = "../php/ProductDetails.php?new=" . $bookid."&buy=1";
-            echo "<a href='".$link."'> <img src='../img/addtocart.png' id='cart' width='180'></a>"
+            $link = "../php/ProductDetails.php?new=" . $bookid . "&buy=1";
+            echo "<a href='" . $link . "'> <img src='../img/addtocart.png' id='cart' width='180'></a>";
+
+            function getCartById($userid,$bookid){
+                // 读写文件
+                $data = file("../dataFile/cart.txt");
+                for ($i = 0; $i < sizeof($data); $i++) {
+                    $array[$i] = "$data[$i]";
+                    // print_r($array[$i])
+                }
+                //book是拆完的书的信息
+                for ($i = 0; $i < count($array); $i++) {
+                    $cartarray = explode(",", $cartarray[$i]);
+                    if($cartarray[0]==$userid && $cartarray[1] ==$bookid){
+                        return $i."ocajnovnaofejnvj\r";
+                    }
+                }
+                return null;
+            }
+            function addBook($userid, $bookid, $url, $bname, $auther, $price)
+            {
+                // userid,bookid,img_url, book_name,author,price,number
+                $re = getCartById($userid,$bookid);
+                if($re == null){
+                    $cart = $userid . "," . $bookid . "," . $url . "," . $bname . "," . $auther . "," . $price . "," . "1" . "\r\n";
+    //                getCartById($userid,$bookid);
+
+                    $file = fopen("../dataFile/cart.txt", "at");
+                    fputs($file, $cart);
+                    fclose($file);
+                }else{
+                    $file = fopen("../dataFile/cart.txt", "at");
+                    fputs($file, $re);
+                    fclose($file);
+                }
+                
+
+            }
+
+            
+            if (isset($_GET['buy'])) {
+
+                addBook($userid, $bookid, $book[0], $book[1], $book[2], $book[3]);
+                //    找到最后一个元素：书本存货量。设为1，加入用户id来合并 辨别记录
+
+            }
+
+
             ?>
 
-<!--            <a href=""> <img src="../img/addtocart.png" id="cart" width="180"></a>-->
+            <!--            <a href=""> <img src="../img/addtocart.png" id="cart" width="180"></a>-->
 
             <!--            如果缺货会显示缺货信息，如果不缺提示有货-->
             <h2><?php
@@ -76,33 +129,7 @@ for ($i = 0; $i < count($bookarray); $i++) {
     </div>
 
 
-    <?php
 
-    //    function addBook() { ... }
-
-
-    //    找到最后一个元素：书本存货量。设为1，加入用户id来合并 辨别记录
-    //    $book[sizeof($book) - 1] = '1';
-    //
-    //    $cart = implode(",", $book);
-    function addBook()
-    {
-
-//        echo "<h1>hahaha</h1>";
-
-        $cart = "XXX" . "," . $_GET['new'] . "," . "4" . "\r\n";
-        $file = fopen("../dataFile/cart.txt", "at");
-        fputs($file, $cart);
-        fclose($file);
-
-    }
-    if (isset($_GET['buy'])) {
-        addBook();
-    }
-
-    //    $numbytes = file_put_contents('../dataFile/cart.txt', $cart, FILE_APPEND); //如果文件不存在创建文件，并写入内容
-
-    ?>
     <!--    不知道下面这句是干啥的-->
     <div class="bl"></div>
 
