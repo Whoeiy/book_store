@@ -15,10 +15,8 @@
     }
 
     if(isset($_POST['userId'])){
-        echo "post have";
         $items = getItems($_POST['userId']);
     } else {
-        echo "session have";
         $items = getItems(trim($_SESSION["userId"]));
     }
 

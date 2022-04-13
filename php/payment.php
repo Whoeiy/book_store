@@ -114,6 +114,7 @@ if(isset($_SESSION['orderid']) and !isset($_POST["ostatus"])){
 }else{
    $_SESSION['status'] = $_POST['ostatus'];
 
+   // store order information
    $toorder = array();
    $toorder[] = $_SESSION['orderid'];
    $toorder[] = trim($_SESSION['userId']);
@@ -134,14 +135,20 @@ if(isset($_SESSION['orderid']) and !isset($_POST["ostatus"])){
    file_put_contents("../dataFile/order.txt", $str, FILE_APPEND);
 
    
-
+	// store order items information
    function insertItems($orderid, $userid) {
 		$items = array();
+		$books_paid = array();
 		$fp = fopen('../dataFile/cart.txt', 'r');
 		while(!feof($fp)){
 			$line = fgets($fp);
 			$arr = explode(',', $line);
 			if($userid == $arr[0]){
+				// record book information that are paid
+				// bookid,quantity
+				$temp = $arr[1] . "," . $arr[6];
+				$books_paid[] = $temp;
+				// add orderid for each orderitem
 				$orderitem = trim($orderid) . "," . $line;
 				$items[] = $orderitem;
 			}
@@ -150,10 +157,34 @@ if(isset($_SESSION['orderid']) and !isset($_POST["ostatus"])){
 		// data format:
 		// orderid,userid,bookid,img_url,bookname,author,price,quantity
 		file_put_contents("../dataFile/orderitem.txt", $items, FILE_APPEND);
+		return $books_paid;
 	}
 
-	insertItems($toorder[0], $toorder[1]);
+	$paid = insertItems($toorder[0], $toorder[1]);
+	print_r($paid);
 
+	// reduct inventory
+	$data = file("../dataFile/book.txt");
+	//在book.txt 中逐行读数据，将读到的数据存入到data数组中，每个元素是一行并转化为字符串
+	for ($i = 0; $i < sizeof($data); $i++) {
+		$books[$i] = "$data[$i]";
+	}
+
+	// print_r($books);
+
+	for($i=0; $i<sizeof($books); $i++){
+		$barr = explode(',', $books[$i]);
+		for($j=0; $j<sizeof($paid); $j++){
+			$parr = explode(',', $paid[$j]);
+			if($i == $parr[0]){ // match the bookid
+				$barr[4] = intval($barr[4]) - intval($parr[1]);
+				$barr[4] = $barr[4] . "\n";
+				$books[$i] = implode(",", $barr);
+			}
+		}
+	}
+	print_r($books);
+	file_put_contents('../dataFile/book.txt', $books);
 
 ?>
 

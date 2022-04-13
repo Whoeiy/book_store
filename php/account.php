@@ -1,13 +1,40 @@
-
-
 <?php
 session_start();
+
+function getOrderInfo($userid) {
+	$items = array();
+	$fp = fopen('../dataFile/order.txt', 'r');
+	while(!feof($fp)){
+		$line = fgets($fp);
+		$arr = explode(',', $line);
+		if($userid == $arr[1]){
+			$items[] = $line;
+			break;
+		}
+	}
+	fclose($fp);
+	return $items;
+}
+
+function getOrderItems($orderid){
+	$items = array();
+	$fp = fopen('../dataFile/orderitem.txt', 'r');
+	while(!feof($fp)){
+		$line = fgets($fp);
+		$arr = explode(',', $line);
+		if($orderid == $arr[0]){
+			$items[] = $line;
+		}
+	}
+	fclose($fp);
+	return $items;
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Account</title>
-	<link rel="stylesheet" type="text/css" href="../css/account.css">
+	<link rel="stylesheet" type="text/css" href="../css/naccount.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka">
 </head>
 <body>
@@ -28,7 +55,7 @@ session_start();
         $src = "login.html";
     }
     ?>
-    <li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
+    <li><a href="shoppingcart.php?quantity=1"><img src="../img/Cart.png" width="50" height="50"></a></li>
     <!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
     <?php
     echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50'></a></li>"
@@ -43,37 +70,65 @@ session_start();
 <!--	</div>-->
 
 	<!-- Content -->
-	
+	<?php
+		$uid = trim($_SESSION["userId"]);
+		$order = getOrderInfo($uid);
+		$orderinfo = explode(',', $order[0]);
+		$orderitems = getOrderItems($orderinfo[0]);
+
+		print_r($orderitems);
+	?>
 	<div class="main">
 		<div class="content">
 			<div class="page_header">
 				<a href="logout.php">LOGOUT</a>
 				<div class="page_header_content">
 					<h1>MY ACCOUNT</h1>
-					<p><?php echo("Welcome back, " . $user["name"] ."!")?></p>
+					<p><?php echo("Welcome back, " . $_SESSION['lname'] ."!")?></p>
 				</div>
 			</div>
 			<div class="page_content">
 				<!-- Left -->
 				<div class="orders">
 					<h2 class="section_header">MY ORDERS</h2>
-					<div class="order_item">
-						<div class="book_img"><img src="../img/book1.jpg"></div>
-						<div class="item_detail">
-							<p class="order_id">Order ID: 1Xfwer3234235</p>
-							<p id="item_name">JavaScript from Beginner to Professional</p>
-							<p class="item_quan">Quantity: 1</p>
-							<p id="order_price">$34.97</p>
-							<p class="order_status">Shipped</p>
-						</div>
-					</div>
+					<?php
+						for($i=0; $i < sizeof($orderitems); $i++){
+							$oitem = explode(',', $orderitems[$i]);
+					?>
+							<div class="order_item">
+								<div class="book_img"><img src= <?php echo $oitem[3];?>></div>
+								<div class="item_detail">
+									<p class="order_id">
+										<?php echo "Order ID: " . $oitem[0]; ?>
+									</p>
+									<p id="item_name">
+										<?php echo $oitem[4]; ?>
+									</p>
+									<p class="item_quan">
+										<?php echo "Quantity: " . $oitem[7]; ?>
+									</p>
+									<p id="order_price">
+										<?php echo "HKD " . $oitem[6]; ?>
+									</p>
+									<p class="order_status">
+										<?php echo "Status: " . $orderinfo[12]; ?>
+									</p>
+								</div>
+							</div>
+					<?php } ?>	
 				</div>
 				<!-- Right -->
 				<div class="address">
-					<h2 class="section_header">PRIMARY ADDRESS</h2>
-					<p class="addr_row">1 XXX XXX ROAD, TAI WEI, NT</p>
-					<p class="addr_row">XXXX, TWX, PHASEX</p>
-					<button id="edit_addr">EDIT ADDRESS</button>
+					<h2 class="section_header">ADDRESS</h2>
+					<p class="addr_row">
+						<?php echo $orderinfo[10] ?>
+					</p>
+					<p class="addr_row">
+						<?php 
+							echo $orderinfo[8] . ",&nbsp" .  $orderinfo[7] . ",&nbsp" . $orderinfo[6];
+						?>
+					</p>
+					<!-- <button id="edit_addr">EDIT ADDRESS</button> -->
 				</div>
 			</div>		
 		</div>

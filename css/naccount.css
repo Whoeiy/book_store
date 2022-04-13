@@ -81,10 +81,10 @@ input, button {
 
 .order_item {
 	width: 730px;
-	height: 180px;
+	height: 200px;
 	display: flex;
 	justify-content: left;
-	margin: 0 20px;
+	margin: 20px 20px;
 	border-bottom: 1px solid;
 	border-color: lightgray;
 	padding-bottom: 10px;
@@ -180,7 +180,8 @@ input, button {
     padding-left:100px;
     position: relative;
     width:20%;
-    　　}
+}
+
 #Footer_Support{
     position: relative;
     padding-left:60px;

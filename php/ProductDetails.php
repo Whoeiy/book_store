@@ -129,7 +129,7 @@ echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50
                         // 说明一样去最后一个数量元素
                         $cartarray[6] = $cartarray[6] + 1;
                         $newrow = $cartarray[0] . "," . $cartarray[1] . "," . $cartarray[2] . "," . $cartarray[3]
-                            . "," . $cartarray[4] . "," . $cartarray[5] . "," . $cartarray[6]."\r";
+                            . "," . $cartarray[4] . "," . $cartarray[5] . "," . $cartarray[6]."\n";
                         $newData[$i] = $newrow;
 
                         $renew = true;
@@ -165,7 +165,7 @@ echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50
                 $re = getCartById($userid, $bookid);
 //                print_r($re);
                 if($re == null){
-                    $cart = $userid . "," . $bookid . "," . $url . "," . $bname . "," . $auther . "," . $price . "," . "1" . "\r";
+                    $cart = $userid . "," . $bookid . "," . $url . "," . $bname . "," . $auther . "," . $price . "," . "1" . "\n";
     //                getCartById($userid,$bookid);
 
                     $file = fopen("../dataFile/cart.txt", "at");
