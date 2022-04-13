@@ -7,7 +7,7 @@
 
 
 <body>
-<!--    导航栏-->
+<!--导航栏-->
 <ul id="d2">
 
     <li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
@@ -20,7 +20,7 @@
 <h1 style="text-align: center;letter-spacing: 10px;">YOUR CART</h1>
 
 <?php
-
+session_start();
 function getItems($userid) {
 	$items = array();
 	$fp = fopen('../dataFile/cart.txt', 'r');
@@ -43,7 +43,7 @@ function getItems($userid) {
 // $cart = explode("," , $cartarray[0]);
 // }
 
-$cartarray = getItems("1");		// parameter: userid
+$cartarray = getItems($_SESSION["userId"]);		// parameter: userid
 $item_price = array();
 
 if($cartarray == null){
