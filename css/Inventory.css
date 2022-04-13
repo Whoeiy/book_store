@@ -164,7 +164,14 @@ h2{
     padding-bottom: 550px;
 
 }
-
+.label1class{
+    cursor: pointer;
+    display: inline-block;
+    padding: 3px 6px;
+    text-align: right;
+    width: 150px;
+    vertical-align: top;
+    line-height:22px}
 
 .Form-Input{
     background: rgb(243,243,243);
@@ -180,12 +187,12 @@ h2{
 }
 .Form-Input2{
     background: rgb(243,243,243);
-    border-radius: 7px;
+    border-radius: 4px;
     font-size: 16px;
-    margin: 4px auto;
+    margin: 8px auto;
     text-align: left;
-    padding-top: 6px;
-    padding-right: 140px;
+    padding-top: 3px;
+    padding-right: 100px;
     padding-bottom: 7px;
     padding-left:7px;
 
@@ -198,6 +205,13 @@ h2{
 #subbook{
     font-size:1vw;
     position: relative ;
+}
+
+#subbook2{
+    font-size:1vw;
+    position: relative ;
+    height: 12px;
+
 }
 .Submit_Botton{
     border-radius: 25px;
