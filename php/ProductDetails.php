@@ -13,6 +13,12 @@
 <body>
 
 <?php
+ini_set("auto_detect_line_endings", true);
+
+// Now I can invoke fgets() on files that contain silly \r line endings.
+?>
+
+<?php
 $bookid = $_GET['new'];
 $userid = $_SESSION['userId'];
 $order = array("\r\n", "\n", "\r");
@@ -72,10 +78,17 @@ for ($i = 0; $i < count($bookarray); $i++) {
             {
                 // 读写文件
                 $data = file("../dataFile/cart.txt");
+                if(count($data)==0){
+                    return null;
+                }
+
+//                print_r($data);
+
                 for ($i = 0; $i < sizeof($data); $i++) {
                     $array[$i] = "$data[$i]";
 
                 }
+//                print_r($array);
                 $newData = array();
                 //book是拆完的书的信息
                 $renew = false;
@@ -100,9 +113,10 @@ for ($i = 0; $i < count($bookarray); $i++) {
 
                 }
                 if ($renew == true) {
+
                     $newStr = "";
                     for ($i = 0; $i < count($newData); $i++) {
-//                        print_r($newData[$i]);
+
                         $newStr = $newStr . $newData[$i];
                     }
 //                    print_r($newStr);
@@ -120,9 +134,9 @@ for ($i = 0; $i < count($bookarray); $i++) {
             {
                 // userid,bookid,img_url, book_name,author,price,number
                 $re = getCartById($userid, $bookid);
-                print_r($re);
+//                print_r($re);
                 if($re == null){
-                    $cart = $userid . "," . $bookid . "," . $url . "," . $bname . "," . $auther . "," . $price . "," . "1" . "\r\n";
+                    $cart = $userid . "," . $bookid . "," . $url . "," . $bname . "," . $auther . "," . $price . "," . "1" . "\r";
     //                getCartById($userid,$bookid);
 
                     $file = fopen("../dataFile/cart.txt", "at");
