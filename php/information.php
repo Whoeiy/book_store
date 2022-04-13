@@ -1,7 +1,15 @@
 
 <?php
 session_start();
-if(!isset($_POST['uname'])){
+
+function getRandomId()
+{
+
+    $Num1 = rand(100000, 999999);
+    return $Num1;
+}
+
+if(isset($_POST['userId']) and !isset($_POS['orderid'])){
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +29,7 @@ if(!isset($_POST['uname'])){
         <div class="p_header">
             <img src="../img/logo.png">
             <ul>
-                <li><a href="ShoppingCart.html">Cart ></a></li>
+                <li><a href="ShoppingCart.html?quantity=1">Cart ></a></li>
                 <li><a href="Information.html">Information ></a></li>
                 <li><a href="shipping.html">Shipping ></a></li>
                 <li><a href="payment.html">Payment</a></li>
@@ -29,7 +37,7 @@ if(!isset($_POST['uname'])){
         </div>
         <form action="information.php" method="post">
             <?php 
-                $orderid = $_GET["orderid"];
+                $orderid = getRandomId();
                 echo("<input type='hidden' name='orderid' value='" . $orderid . "'>");
             ?>
 

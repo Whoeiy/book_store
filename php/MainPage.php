@@ -36,7 +36,7 @@
         $src = "login.html";
     }
     ?>
-    <li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
+    <li><a href="shoppingcart.php?quantity=1"><img src="../img/Cart.png" width="50" height="50"></a></li>
     <!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
     <?php
     echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50'></a></li>"

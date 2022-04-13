@@ -19,7 +19,7 @@ while (!feof($file)) {
 if ($good) {
 
     session_start();
-    $_SESSION['email'] = $email;
+    $_SESSION['lemail'] = $email;
     $_SESSION['lname'] = $lname;
     $_SESSION['userId'] = $userId;
     echo '<script type="text/javascript"> window.open("MainPage.php","_self");</script>';

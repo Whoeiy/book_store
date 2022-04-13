@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['name']) and !isset($_POST["ushippingMethod"]) ){
+if(isset($_SESSION['orderid']) and !isset($_POST["ushippingMethod"]) ){
 
 ?>
 

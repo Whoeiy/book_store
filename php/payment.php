@@ -1,7 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['name']) and !isset($_POST["ostatus"])){
-
+if(isset($_SESSION['orderid']) and !isset($_POST["ostatus"])){
 ?>
 
 
@@ -56,7 +55,7 @@ if(isset($_SESSION['name']) and !isset($_POST["ostatus"])){
 							Method
 						</div>
 						<div class="p_info_content">
-							14-28 Day Delivery · $26.99
+							<?php echo $_SESSION["shippingMethod"];?>
 						</div>
 					</div>
 				</div>
@@ -114,16 +113,55 @@ if(isset($_SESSION['name']) and !isset($_POST["ostatus"])){
 
 }else{
    $_SESSION['status'] = $_POST['ostatus'];
-   $str = implode(',', $_SESSION) . "\n";
+
+   $toorder = array();
+   $toorder[] = $_SESSION['orderid'];
+   $toorder[] = trim($_SESSION['userId']);
+   $toorder[] = $_SESSION['name'];
+   $toorder[] = $_SESSION['phone'];
+   $toorder[] = $_SESSION['email'];
+   $toorder[] = $_SESSION['news'];
+   $toorder[] = $_SESSION['province'];
+   $toorder[] = $_SESSION['city'];
+   $toorder[] = $_SESSION['area'];
+   $toorder[] = $_SESSION['postcode'];
+   $toorder[] = $_SESSION['address'];
+   $toorder[] = $_SESSION['shippingMethod'];
+   $toorder[] = $_SESSION['status'];
+   $str = implode(',', $toorder) . "\n";
    // data format: 
-   // orderid,name,phone,email,news,province,city,area,postcode,address,shippingMethod,status
-   file_put_contents("order.txt", $str, FILE_APPEND);
+   // orderid,userid,name,phone,email,news,province,city,area,postcode,address,shippingMethod,status
+   file_put_contents("../dataFile/order.txt", $str, FILE_APPEND);
+
+   
+
+   function insertItems($orderid, $userid) {
+		$items = array();
+		$fp = fopen('../dataFile/cart.txt', 'r');
+		while(!feof($fp)){
+			$line = fgets($fp);
+			$arr = explode(',', $line);
+			if($userid == $arr[0]){
+				$orderitem = trim($orderid) . "," . $line;
+				$items[] = $orderitem;
+			}
+		}
+		fclose($fp);
+		// data format:
+		// orderid,userid,bookid,img_url,bookname,author,price,quantity
+		file_put_contents("../dataFile/orderitem.txt", $items, FILE_APPEND);
+	}
+
+	insertItems($toorder[0], $toorder[1]);
+
+
 ?>
 
 <html>
     <body>
         <script type="text/javascript">
-            alert("Success!!")
+            alert("Success!!");
+			window.location.href = "account.php";
         </script>
     </body>
 </html>
