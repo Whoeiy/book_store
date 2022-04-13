@@ -37,9 +37,10 @@ function getItems($userid) {
 }
 
 $user = $_SESSION["userId"];
+$quantity = $_GET['quantity'];
 $cartarray = getItems(trim($user));		// 清除前后空格 & parameter: userid
 $item_price = array();
-
+//print_r($cartarray);
 if($cartarray == null){
 	echo "
 	<h3 style='text-align:center;color:gray;'>Your shopping cart is empty</h3>
@@ -48,6 +49,26 @@ if($cartarray == null){
 }else{
 	for ($i=0; $i<count($cartarray); $i++) {
 		$cart = explode("," , $cartarray[$i]);
+		//$bookid = $cart[1];
+		//print_r($cart);
+		$cartid = $_GET['cartid'];
+		if(isset($_GET['addone']) && $i==$cartid){
+			$cart[6] = $quantity;
+			$fp = fopen('../dataFile/cart.txt',"w");
+			$cart = $cart[0] . "," . $cart[1] . "," . $cart[2] . "," . $cart[3] . "," . $cart[4] . "," . $cart[5]. "," . $cart[6] . "\r\n";;
+			//print_r($cart);
+			//print_r($cartarray);
+			$cartarray[$i]=$cart;
+			//print_r($cartarray);
+  			$numbytes = file_put_contents('../dataFile/cart.txt', $cartarray);
+		}
+	}
+	$cartarray = getItems(trim($user));		// 清除前后空格 & parameter: userid
+	$item_price = array();
+	for ($i=0; $i<count($cartarray); $i++) {
+		$cart = explode("," , $cartarray[$i]);
+		//$bookid = $cart[1];
+		//print_r($cart);
 		echo "
 		<div class = 'bookinfo'>
 			<div class = 'bookitem'>
@@ -60,19 +81,18 @@ if($cartarray == null){
 				</div>
 				<div class = 'des'>
 					<h3>";
-			echo $cart[4];
+			echo $cart[3];
 			echo "</h3>
 					<div style='overflow: hidden;''>
 						<p style='color: gray;float: left;''>Paperback</p>
 						<h2 style='float: right;''>HKD ";
+			echo $cart[6];
 			$price = doubleval($cart[5]) * intval($cart[6]);
 			$item_price[] = $price;
 			echo $price;
 			echo "</h2>
 					</div>
-	
-					
-					<a href='shoppingcart2.php'><input type='submit' value='ADD ONE' style='float:right;' /></a>
+					<a href='./shoppingcart.php?quantity=2&cartid=".$i."&addone=1'><input type='submit' value='ADD ONE' style='float:right;' /></a>
 					<p style='color: gray;float: left;margin-top: 0px;''>Quantity:" . $cart[6] . "</p>
 					
 				</div>

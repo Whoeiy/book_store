@@ -34,7 +34,7 @@ for ($i = 0; $i < count($bookarray); $i++) {
 <!--导航栏-->
 <ul id="d2" style="width: 100%; font-size: 1vw;">
 
-    <li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
+    <li><a href="shoppingcart.php?quantity=1"><img src="../img/Cart.png" width="50" height="50"></a></li>
     <li><a href="login.html"><img src="../img/login.png" width="50" height="50"></a></li>
 
     <li style="float:left"><a href="MainPage.php"><img src="../img/logo.png" height="50"> </a></li>
