@@ -45,7 +45,7 @@ if(isset($_SESSION['orderid']) and !isset($_POST["ushippingMethod"]) ){
                 </select>
             </div>
             <div class="bottom">
-                <p>< Return to information</p>
+                <!-- <a href="javascript:history.go(-1);"><p>< Return to information</p></a> -->
                 <input type="submit" value="Continue to payment">
             </div>
         </form>

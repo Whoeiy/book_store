@@ -96,7 +96,7 @@ if(isset($_SESSION['orderid']) and !isset($_POST["ostatus"])){
 					</div>	
                     <input type="hidden" name="ostatus" value="paid">
 					<div class="p_footer">
-						<span>< Return to shipping</span>
+						<!-- <span>< Return to shipping</span> -->
 						<input type="submit" name="submit" value="Pay now">
 					</div>				
 				</form>

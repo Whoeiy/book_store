@@ -64,7 +64,7 @@ if(isset($_POST['userId']) and !isset($_POS['orderid'])){
             </div>
 
             <div class="bottom">
-                <p>< Return to cart</p>
+                <a href="javascript:history.go(-1);"><p>< Return to cart</p></a>
                 <input type="submit" value="Continue to shipping">
             </div>
         </form>
