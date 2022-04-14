@@ -8,7 +8,7 @@ GROUP 6 PROJECT of CS5281
 - Shopping and payment service
 - Order checking 
 
-**Function of manager**
+**Functions of manager**
 - inventory management 
 - Add new productes
 - Order management
