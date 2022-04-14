@@ -191,7 +191,7 @@ $book0 = explode("," , $bookarray[$bookid]);
       <a href="MainPage.php" > <img src="../img/logo.png" width="200px"></a>
     </div>
     <div id="Footer_Copyright">
-        <a href="www.bookstore.com" class="Link" style="padding-left: 40%">© BOOKSTORE POWERED BY GOZILLA</a>
+        <a href="www.bookstore.com" class="Link" style="padding-left: 40%">© BOOKSTORE POWERED BY GROUP 6 CityU</a>
     </div>
 
 </div>

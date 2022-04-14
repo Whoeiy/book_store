@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php session_start();
+ini_set('display_errors',1);            //错误信息
+ini_set('display_startup_errors',1);    //php启动错误信息
+error_reporting(-1);    
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +78,7 @@ for ($i = 0; $i < count($bookarray); $i++) {
 <!---->
 <!--    <li style="float:left"><a href="MainPage.php"><img src="../img/logo.png" height="50"> </a></li>-->
 <!---->
-<!--</ul>-->
+</ul>
 
 
 
@@ -129,7 +134,7 @@ for ($i = 0; $i < count($bookarray); $i++) {
 
                     if ($cartarray[0] == $userid && $cartarray[1] == $bookid) {
                         // 说明一样去最后一个数量元素
-                        $cartarray[6] = $cartarray[6] + 1;
+                        $cartarray[6] = intval($cartarray[6]) + 1;
                         $newrow = $cartarray[0] . "," . $cartarray[1] . "," . $cartarray[2] . "," . $cartarray[3]
                             . "," . $cartarray[4] . "," . $cartarray[5] . "," . $cartarray[6]."\n";
                         $newData[$i] = $newrow;
@@ -289,7 +294,7 @@ for ($i = 0; $i < count($bookarray); $i++) {
         <a href="MainPage.php"> <img src="../img/logo.png" width="200px"></a>
     </div>
     <div id="Footer_Copyright">
-        <a href="www.bookstore.com" class="Link" style="padding-left: 40%">© BOOKSTORE POWERED BY GOZILLA</a>
+        <a href="www.bookstore.com" class="Link" style="padding-left: 40%">© BOOKSTORE POWERED BY GROUP 6 CityU</a>
     </div>
 
 </div>
