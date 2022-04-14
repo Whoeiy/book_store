@@ -71,10 +71,10 @@ $book0 = explode("," , $bookarray[$bookid]);
 
 <ul id="d2" style="width: 100%; font-size: 1vw;">
 
-    <li><a href="ShoppingCart-.html"><img src="../img/Cart.png" width="50" height="50"></a></li>
-    <li><a href="login.html"><img src="../img/login.png" width="50" height="50"></a></li>
-    <li><a herf=""><p style="color: black">Inventory Manager</p></a></li>
-    <li style="float:left"><a href="MainPage.html"><img src="../img/logo.png" height="50" > </a> </li>
+    <!-- <li><a href="ShoppingCart-.html"><img src="../img/Cart.png" width="50" height="50"></a></li> -->
+    <li><a href="#"><img src="../img/login.png" width="50" height="50"></a></li>
+    <li><a href="OrderManagement.php"><p style="color: black">Inventory Manager</p></a></li>
+    <li style="float:left"><a href="MainPage.php"><img src="../img/logo.png" height="50" > </a> </li>
 
 </ul>
 
@@ -145,7 +145,7 @@ $book5[3]=$_POST["bookprice"];
 $book5[4]=$_POST["bookstoreage"];
 $new[5] = implode(",", $book5);
 
-$newarray=implode($new,"\n");
+$newarray=implode("\n", $new);
    $numbytes = file_put_contents('../dataFile/book.txt', $newarray); //如果文件不存在创建文件，并写入内容
 
 ?>
@@ -188,7 +188,7 @@ $book0 = explode("," , $bookarray[$bookid]);
 
     </div>
     <div class="Footer_item" id="Footer_img">
-      <a href="MainPage.html" > <img src="../img/logo.png" width="200px"></a>
+      <a href="MainPage.php" > <img src="../img/logo.png" width="200px"></a>
     </div>
     <div id="Footer_Copyright">
         <a href="www.bookstore.com" class="Link" style="padding-left: 40%">© BOOKSTORE POWERED BY GOZILLA</a>

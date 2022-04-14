@@ -1,7 +1,10 @@
 <?php
+$orderid = $_POST["orderid"];
+$userid = $_POST["userid"];
 $name = $_POST["name"];
 $phone = $_POST["tel"];
 $email = $_POST["email"];
+$news = $_POST["news"];
 $province = $_POST["pro"];
 $city = $_POST["city"];
 $area = $_POST["area"];
@@ -19,16 +22,15 @@ echo "User submit by POST: '$status'<BR><BR>";
 
 
 
-$fp = fopen('order.txt',"w+") or exit("Unable to open file!");
+$fp = fopen('../dataFile/order.txt',"w+") or exit("Unable to open file!");
 
 
 
-$str = $name . ',' . $phone . ',' . $email . ',' . $province . ',' . $city . ',' . $area . ',' . $postcode . ',' . $address . ',' .$method . ',' .$status . ',' ."\r";
+$str = $orderid . ',' . $userid . ',' . $name . ',' . $phone . ',' . $email . ',' . $news . ',' . $province . ',' . $city . ',' . $area . ',' . $postcode . ',' . $address . ',' .$method . ',' .$status ."\r";
 //fwrite($fp,$attribute) or exit("Unable to open file!");;
 fwrite($fp,$str);
 fclose($fp);
 echo "file update succeed!"
-
 
 
 ?>

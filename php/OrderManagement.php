@@ -13,7 +13,7 @@
 
  <?php
 $orderid=0;
-$data = file("order.txt");
+$data = file("../dataFile/order.txt");
 for ($i=0; $i<sizeof($data); $i++) {
 $orderarray[$i]= "$data[$i]";
 }
@@ -27,10 +27,10 @@ $order0 = explode("," , $orderarray[$orderid]);
 
 <ul id="d2" style="width: 100%; font-size: 1vw;">
 
-    <li><a href="ShoppingCart.html"><img src="../img/Cart.png" width="50" height="50"></a></li>
-    <li><a href="login.html"><img src="../img/login.png" width="50" height="50"></a></li>
-    <li><a herf=""><p style="color: black">Order Manager</p></a></li>
-    <li style="float:left"><a href="MainPage.html"><img src="../img/logo.png" height="50" > </a> </li>
+    <!-- <li><a href="ShoppingCart.html"><img src="../img/Cart.png" width="50" height="50"></a></li> -->
+    <li><a href="#"><img src="../img/login.png" width="50" height="50"></a></li>
+    <li><a href="InventoryManagement.php"><p style="color: black">Order Manager</p></a></li>
+    <li style="float:left"><a href="MainPage.php"><img src="../img/logo.png" height="50" > </a> </li>
 
 </ul>
 
@@ -57,18 +57,21 @@ $order0 = explode("," , $orderarray[$orderid]);
                 <th>Update Status</th>
             </tr>
             <tr>
-                <td><input style="width: 50px" type="text" value="<?php echo $order0[0]?>" name="name"></td>
-                <td><input type="text" value="<?php echo $order0[1]?>" name="tel"></td>
-                <td><input type="text" value="<?php echo $order0[2]?>" name="email"></td>
-                <td><input style="width: 50px" type="text" value="<?php echo $order0[3]?>" name="pro"></td>
-                <td><input style="width: 50px" type="text" value="<?php echo $order0[4]?>" name="city"></td>
-                <td><input style="width: 50px" type="text" value="<?php echo $order0[5]?>" name="area"></td>
-                <td><input type="text" value="<?php echo $order0[6]?>" name="zipcode"></td>
-                <td><input type="text" value="<?php echo $order0[7]?>" name="add"></td>
-                <td><input style="width: 50px" type="text" value="<?php echo $order0[8]?>" name="method"></td>
-                <td><input type="text" value="<?php echo $order0[9]?>" name="status"></td>
+                <input type="hidden" name="orderid" value="<?php echo $order0[0]?>">
+                <input type="hidden" name="userid" value="<?php echo $order0[1]?>">
+                <td><input style="width: 50px" type="text" value="<?php echo $order0[2]?>" name="name"></td>
+                <td><input type="text" value="<?php echo $order0[3]?>" name="tel"></td>
+                <td><input type="text" value="<?php echo $order0[4]?>" name="email"></td>
+                <input type="hidden" name="news" value="<?php echo $order0[5]?>">
+                <td><input style="width: 50px" type="text" value="<?php echo $order0[6]?>" name="pro"></td>
+                <td><input style="width: 50px" type="text" value="<?php echo $order0[7]?>" name="city"></td>
+                <td><input style="width: 50px" type="text" value="<?php echo $order0[8]?>" name="area"></td>
+                <td><input type="text" value="<?php echo $order0[9]?>" name="zipcode"></td>
+                <td><input type="text" value="<?php echo $order0[10]?>" name="add"></td>
+                <td><input style="width: 50px" type="text" value="<?php echo $order0[11]?>" name="method"></td>
+                <td><input type="text" value="<?php echo $order0[12]?>" name="status"></td>
                 <td><select name="status">
-                        <option value="Unpaid" selected>Unpaid</option>
+                        <option value="paid" selected>paid</option>
                         <option value="Shipping">Shipping</option>
                         <option value="Complete" >Complete</option>
                     </select>
@@ -114,7 +117,7 @@ $order0 = explode("," , $orderarray[$orderid]);
 
     </div>
     <div class="Footer_item" id="Footer_img">
-      <a href="MainPage.html" > <img src="../img/logo.png" width="200px"></a>
+      <a href="MainPage.php" > <img src="../img/logo.png" width="200px"></a>
     </div>
     <div id="Footer_Copyright">
         <a href="www.bookstore.com" class="Link" style="padding-left: 40%">© BOOKSTORE POWERED BY GOZILLA</a>
