@@ -2,6 +2,5 @@ hanbin,li,929580807@qq.com,1,47739935
 wenxi,lyu,wenxilyu2-c@cityu.edu.hk,123123,93050944
 Nancy,Liu,test@126.com,123456,41070095
 L,O,happy@126.com,123456,45518546
-Happy,Li,test111@126.com,123456,66907130
-Lucy,Xu,test11111@126.com,123456,15779487
 Jennifer,Yu,jenniferyue@outlook.com,123456,51643849
+Jennifer,Yu,test23@126.com,123456,14775102

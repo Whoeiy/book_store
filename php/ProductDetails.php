@@ -201,7 +201,7 @@ for ($i = 0; $i < count($bookarray); $i++) {
                     //相等
                     echo("There is no stock available at the moment, so stay tuned.");
                 } else {
-                    echo("10+ copies available online - Usually dispatched within two working days");
+                    echo("Available online - Usually dispatched within two working days");
                 } ?>
             </h2>
         </div>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka">
-    <title>Product Details</title>
+    <title>Inventory Management</title>
 
     <link rel="stylesheet" type="text/css" href="../css/Inventory.css">
 </head>
@@ -130,7 +130,7 @@ $book4[4]=$_POST["book4"];
 
 
 $new[0] = implode(",", $book0);
-$new[1] = implode(",", $book0);
+$new[1] = implode(",", $book1);
 $new[2] = implode(",", $book2);
 $new[3] = implode(",", $book3);
 $new[4] = implode(",", $book4);
@@ -146,7 +146,9 @@ $book5[4]=$_POST["bookstoreage"];
 $new[5] = implode(",", $book5);
 
 $newarray=implode("\n", $new);
-   $numbytes = file_put_contents('../dataFile/book.txt', $newarray); //如果文件不存在创建文件，并写入内容
+if(isset($_POST['book5'])){
+    $numbytes = file_put_contents('../dataFile/book.txt', $newarray); //如果文件不存在创建文件，并写入内容
+}
 
 ?>
 <?php
