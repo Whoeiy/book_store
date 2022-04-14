@@ -12,7 +12,7 @@
 
 <?php
 $bookid=4;
-$data = file("book.txt");
+$data = file("../dataFile/book.txt");
 for ($i=0; $i<sizeof($data); $i++) {
 $bookarray[$i]= "$data[$i]";
 }
@@ -24,7 +24,7 @@ $book4 = explode("," , $bookarray[$bookid]);
 
 <?php
 $bookid=3;
-$data = file("book.txt");
+$data = file("../dataFile/book.txt");
 for ($i=0; $i<sizeof($data); $i++) {
 $bookarray[$i]= "$data[$i]";
 }
@@ -35,7 +35,7 @@ $book3 = explode("," , $bookarray[$bookid]);
 ?>
 <?php
 $bookid=2;
-$data = file("book.txt");
+$data = file("../dataFile/book.txt");
 for ($i=0; $i<sizeof($data); $i++) {
 $bookarray[$i]= "$data[$i]";
 }
@@ -46,7 +46,7 @@ $book2 = explode("," , $bookarray[$bookid]);
 ?>
 <?php
 $bookid=1;
-$data = file("book.txt");
+$data = file("../dataFile/book.txt");
 for ($i=0; $i<sizeof($data); $i++) {
 $bookarray[$i]= "$data[$i]";
 }
@@ -57,7 +57,7 @@ $book1 = explode("," , $bookarray[$bookid]);
 ?>
 <?php
 $bookid=0;
-$data = file("book.txt");
+$data = file("../dataFile/book.txt");
 for ($i=0; $i<sizeof($data); $i++) {
 $bookarray[$i]= "$data[$i]";
 }
@@ -146,12 +146,12 @@ $book5[4]=$_POST["bookstoreage"];
 $new[5] = implode($book5,",");
 
 $newarray=implode($new,"\n");
-   $numbytes = file_put_contents('book.txt', $newarray); //如果文件不存在创建文件，并写入内容
+   $numbytes = file_put_contents('../dataFile/book.txt', $newarray); //如果文件不存在创建文件，并写入内容
 
 ?>
 <?php
 $bookid=5;
-$data = file("book.txt");
+$data = file("../dataFile/book.txt");
 for ($i=0; $i<sizeof($data); $i++) {
 $bookarray[$i]= "$data[$i]";
 }
