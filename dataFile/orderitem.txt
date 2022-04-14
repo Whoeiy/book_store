@@ -1,0 +1,2 @@
+729807,41070095,0,../img/sample1.jpg,Between Thought And Expression Lies A Lifetime Why Ideas Matter,James Kelman&Noam Chomsky,99.72,1
+729807,41070095,3,../img/sample4.jpeg,The Real Anthony Fauci,Robert Francis Kennedy,235.07,2

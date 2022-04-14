@@ -1,7 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['name']) and !isset($_POST["ostatus"])){
-
+if(isset($_SESSION['orderid']) and !isset($_POST["ostatus"])){
 ?>
 
 
@@ -19,10 +18,10 @@ if(isset($_SESSION['name']) and !isset($_POST["ostatus"])){
 				<div class="p_header">
 					<img src="../img/logo.png">
 					<ul>
-						<li><a href="ShoppingCart.html">Cart ></a></li>
-						<li><a href="Information.html">Information ></a></li>
-						<li><a href="shipping.html">Shipping ></a></li>
-						<li><a href="payment.html">Payment</a></li>
+						<li><a href="shoppingcart.php?quantity=1">Cart ></a></li>
+						<li><a href="#">Information ></a></li>
+						<li><a href="#">Shipping ></a></li>
+						<li><a href="#">Payment</a></li>
 					</ul>
 				</div>
 				<div class="p_info">
@@ -56,7 +55,7 @@ if(isset($_SESSION['name']) and !isset($_POST["ostatus"])){
 							Method
 						</div>
 						<div class="p_info_content">
-							14-28 Day Delivery · $26.99
+							<?php echo $_SESSION["shippingMethod"];?>
 						</div>
 					</div>
 				</div>
@@ -97,7 +96,7 @@ if(isset($_SESSION['name']) and !isset($_POST["ostatus"])){
 					</div>	
                     <input type="hidden" name="ostatus" value="paid">
 					<div class="p_footer">
-						<span>< Return to shipping</span>
+						<!-- <span>< Return to shipping</span> -->
 						<input type="submit" name="submit" value="Pay now">
 					</div>				
 				</form>
@@ -114,16 +113,86 @@ if(isset($_SESSION['name']) and !isset($_POST["ostatus"])){
 
 }else{
    $_SESSION['status'] = $_POST['ostatus'];
-   $str = implode(',', $_SESSION) . "\n";
+
+   // store order information
+   $toorder = array();
+   $toorder[] = $_SESSION['orderid'];
+   $toorder[] = trim($_SESSION['userId']);
+   $toorder[] = $_SESSION['name'];
+   $toorder[] = $_SESSION['phone'];
+   $toorder[] = $_SESSION['email'];
+   $toorder[] = $_SESSION['news'];
+   $toorder[] = $_SESSION['province'];
+   $toorder[] = $_SESSION['city'];
+   $toorder[] = $_SESSION['area'];
+   $toorder[] = $_SESSION['postcode'];
+   $toorder[] = $_SESSION['address'];
+   $toorder[] = $_SESSION['shippingMethod'];
+   $toorder[] = $_SESSION['status'];
+   $str = implode(',', $toorder) . "\n";
    // data format: 
-   // orderid,name,phone,email,news,province,city,area,postcode,address,shippingMethod,status
-   file_put_contents("order.txt", $str, FILE_APPEND);
+   // orderid,userid,name,phone,email,news,province,city,area,postcode,address,shippingMethod,status
+   file_put_contents("../dataFile/order.txt", $str, FILE_APPEND);
+
+   
+	// store order items information
+   function insertItems($orderid, $userid) {
+		$items = array();
+		$books_paid = array();
+		$fp = fopen('../dataFile/cart.txt', 'r');
+		while(!feof($fp)){
+			$line = fgets($fp);
+			$arr = explode(',', $line);
+			if($userid == $arr[0]){
+				// record book information that are paid
+				// bookid,quantity
+				$temp = $arr[1] . "," . $arr[6];
+				$books_paid[] = $temp;
+				// add orderid for each orderitem
+				$orderitem = trim($orderid) . "," . $line;
+				$items[] = $orderitem;
+			}
+		}
+		fclose($fp);
+		// data format:
+		// orderid,userid,bookid,img_url,bookname,author,price,quantity
+		file_put_contents("../dataFile/orderitem.txt", $items, FILE_APPEND);
+		return $books_paid;
+	}
+
+	$paid = insertItems($toorder[0], $toorder[1]);
+	print_r($paid);
+
+	// reduct inventory
+	$data = file("../dataFile/book.txt");
+	//在book.txt 中逐行读数据，将读到的数据存入到data数组中，每个元素是一行并转化为字符串
+	for ($i = 0; $i < sizeof($data); $i++) {
+		$books[$i] = "$data[$i]";
+	}
+
+	// print_r($books);
+
+	for($i=0; $i<sizeof($books); $i++){
+		$barr = explode(',', $books[$i]);
+		for($j=0; $j<sizeof($paid); $j++){
+			$parr = explode(',', $paid[$j]);
+			if($i == $parr[0]){ // match the bookid
+				$barr[4] = intval($barr[4]) - intval($parr[1]);
+				$barr[4] = $barr[4] . "\n";
+				$books[$i] = implode(",", $barr);
+			}
+		}
+	}
+	print_r($books);
+	file_put_contents('../dataFile/book.txt', $books);
+
 ?>
 
 <html>
     <body>
         <script type="text/javascript">
-            alert("Success!!")
+            alert("Success!!");
+			window.location.href = "account.php";
         </script>
     </body>
 </html>

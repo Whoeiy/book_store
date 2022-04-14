@@ -1,6 +1,6 @@
-../img/sample1.jpg,Between Thought And Expression Lies A Lifetime Why Ideas Matter,James Kelman&Noam Chomsky,99.72,
-../img/sample3.jpeg,Breath The New Science of a Lost Art,James Nestor,89.72,
-../img/sample2.jpeg,A Little History of Science - Little Histories,W. F. Bynum,104.34,
-../img/sample4.jpeg,The Real Anthony Fauci,Robert Francis Kennedy,235.07,
-../img/sample5.jpeg,Galatea A Short Story,Madeline Miller,71.88,
-../img/sample6.jpeg,Burning Questions Essays and Occasional Pieces 2004–2021,Margaret Atwood,174.，71
+../img/sample1.jpg,Between Thought And Expression Lies A Lifetime Why Ideas Matter,James Kelman&Noam Chomsky,99.72,7
+../img/sample3.jpeg,Breath The New Science of a Lost Art,James Nestor,89.72,10
+../img/sample2.jpeg,A Little History of Science - Little Histories,W. F. Bynum,104.34,10
+../img/sample4.jpeg,The Real Anthony Fauci,Robert Francis Kennedy,235.07,4
+../img/sample5.jpeg,Galatea A Short Story,Madeline Miller,71.88,10
+../img/sample6.jpeg,Burning Questions Essays and Occasional Pieces 2004–2021,Margaret Atwood,174.71,10

@@ -48,20 +48,22 @@ for ($i = 0; $i < count($bookarray); $i++) {
 
 <?php
 //    var $src;
-// $_SESSION = array();
-if (isset($_SESSION['lname'])) {  // Checking whether the session is already there or not if
-    // true then header redirect it to the home page directly
+    // $_SESSION = array();
+    if (isset($_SESSION['lname'])) {  // Checking whether the session is already there or not if
+        // true then header redirect it to the home page directly
 
-    echo 'Welcome! &nbsp' . $_SESSION['lname'];
-    $src = "account.php";
-} else {
-    $src = "login.html";
-}
-?>
-<li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
-<!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
-<?php
-echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50'></a></li>"
+        echo 'Welcome! &nbsp' . $_SESSION['lname'];
+        $src = "account.php";
+        $cart_src = "shoppingcart.php?quantity=1";
+    } else {
+        $src = "login.html";
+        $cart_src = "#";
+    }
+    ?>
+    <li><a href= <?php echo $cart_src; ?>><img src="../img/Cart.png" width="50" height="50"></a></li>
+    <!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
+    <?php
+    echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50'></a></li>"
 ?>
 </ul>
 <!--<ul id="d2" style="width: 100%; font-size: 1vw;">-->
@@ -129,7 +131,7 @@ echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50
                         // 说明一样去最后一个数量元素
                         $cartarray[6] = $cartarray[6] + 1;
                         $newrow = $cartarray[0] . "," . $cartarray[1] . "," . $cartarray[2] . "," . $cartarray[3]
-                            . "," . $cartarray[4] . "," . $cartarray[5] . "," . $cartarray[6]."\r";
+                            . "," . $cartarray[4] . "," . $cartarray[5] . "," . $cartarray[6]."\n";
                         $newData[$i] = $newrow;
 
                         $renew = true;
@@ -165,7 +167,7 @@ echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50
                 $re = getCartById($userid, $bookid);
 //                print_r($re);
                 if($re == null){
-                    $cart = $userid . "," . $bookid . "," . $url . "," . $bname . "," . $auther . "," . $price . "," . "1" . "\r";
+                    $cart = $userid . "," . $bookid . "," . $url . "," . $bname . "," . $auther . "," . $price . "," . "1" . "\n";
     //                getCartById($userid,$bookid);
 
                     $file = fopen("../dataFile/cart.txt", "at");

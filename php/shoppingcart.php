@@ -26,7 +26,7 @@ if (isset($_SESSION['lname'])) {  // Checking whether the session is already the
     $src = "login.html";
 }
 ?>
-<li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
+<li><a href="shoppingcart.php?quantity=1"><img src="../img/Cart.png" width="50" height="50"></a></li>
 <!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
 <?php
 echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50'></a></li>"
@@ -48,7 +48,6 @@ echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50
 <h1 style="text-align: center;letter-spacing: 10px;">YOUR CART</h1>
 
 <?php
-session_start();
 function getItems($userid) {
 	$items = array();
 	$fp = fopen('../dataFile/cart.txt', 'r');
@@ -114,7 +113,7 @@ if($cartarray == null){
 					<div style='overflow: hidden;''>
 						<p style='color: gray;float: left;''>Paperback</p>
 						<h2 style='float: right;''>HKD ";
-			echo $cart[6];
+			// echo $cart[6];
 			$price = doubleval($cart[5]) * intval($cart[6]);
 			$item_price[] = $price;
 			echo $price;
@@ -140,9 +139,13 @@ if($cartarray == null){
 			<div class = 'total' style='float: right;''>
 				<h1>Total:&nbsp;&nbsp;HKD ";
     echo array_sum($item_price);
+
     echo "
 			</h1>
-				<a href='information.php'><input type='button' value='CHECKOUT' style='float:right;' /></a>
+				<form action='information.php' method='post'>
+					<input type='hidden' name='userId' value='" . trim($_SESSION['userId']) ."'/>
+					<input type='submit' value='CHECKOUT' style='float:right;' />
+				</form>
 			</div>
 		</div>
 

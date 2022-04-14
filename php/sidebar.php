@@ -1,22 +1,23 @@
 
 <?php
-    function getItems($orderid) {
+    function getItems($userid) {
         $items = array();
-        $fp = fopen('./orderItem.txt', 'r');
+        $fp = fopen('../dataFile/cart.txt', 'r');
         while(!feof($fp)){
             $line = fgets($fp);
             $arr = explode(',', $line);
-            if($orderid == $arr[0])
-            $items[] = $line;
+            if($userid == $arr[0]){
+                $items[] = $line;
+            }
         }
         fclose($fp);
         return $items;
     }
 
-    if(isset($_GET['orderid'])){
-        $items = getItems($_GET["orderid"]);
+    if(isset($_POST['userId'])){
+        $items = getItems($_POST['userId']);
     } else {
-        $items = getItems($_SESSION["orderid"]);
+        $items = getItems(trim($_SESSION["userId"]));
     }
 
     $item_price = array();
@@ -25,14 +26,14 @@
         $item = explode(',', $items[$i]);
         echo("<div class='order_item'>");
         echo("<div class='book_img'>");
-        echo("<img src=" . $item[4] . ">");
+        echo("<img src=" . $item[2] . ">");
         echo("</div>");
         echo(" <div class='item_middle'><div class='item_detail'>");
-        echo("<p id='item_name'>" . $item[5] . "</p>");
-        echo("<p id='item_quan'>Quantity:" . $item[2] . "</p>");
+        echo("<p id='item_name'>" . $item[3] . "</p>");
+        echo("<p id='item_quan'>Quantity:" . $item[6] . "</p>");
         echo("</div></div>");
         echo("<div class='item_price'>");
-        $price = doubleval($item[3]) * intval($item[2]);
+        $price = doubleval($item[5]) * intval($item[6]);
         $item_price[] = $price;
         echo("<p id='order_price'>" . $price . " HKD</p>");
         echo("</div></div>");

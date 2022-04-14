@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['name']) and !isset($_POST["ushippingMethod"]) ){
+if(isset($_SESSION['orderid']) and !isset($_POST["ushippingMethod"]) ){
 
 ?>
 
@@ -21,10 +21,10 @@ if(isset($_SESSION['name']) and !isset($_POST["ushippingMethod"]) ){
         <div class="p_header">
             <img src="../img/logo.png">
             <ul>
-                <li><a href="ShoppingCart.html">Cart ></a></li>
-                <li><a href="Information.html">Information ></a></li>
-                <li><a href="shipping.html">Shipping ></a></li>
-                <li><a href="payment.html">Payment</a></li>
+                <li><a href="shoppingcart.php?quantity=1">Cart ></a></li>
+                <li><a href="#">Information ></a></li>
+                <li><a href="#">Shipping ></a></li>
+                <li><a href="#">Payment</a></li>
             </ul>
         </div>
         <form  action="shipping.php" method="post">
@@ -45,7 +45,7 @@ if(isset($_SESSION['name']) and !isset($_POST["ushippingMethod"]) ){
                 </select>
             </div>
             <div class="bottom">
-                <p>< Return to information</p>
+                <!-- <a href="javascript:history.go(-1);"><p>< Return to information</p></a> -->
                 <input type="submit" value="Continue to payment">
             </div>
         </form>

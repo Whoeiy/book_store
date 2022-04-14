@@ -32,11 +32,13 @@
 
         echo 'Welcome! &nbsp' . $_SESSION['lname'];
         $src = "account.php";
+        $cart_src = "shoppingcart.php?quantity=1";
     } else {
         $src = "login.html";
+        $cart_src = "#";
     }
     ?>
-    <li><a href="shoppingcart.php"><img src="../img/Cart.png" width="50" height="50"></a></li>
+    <li><a href= <?php echo $cart_src; ?>><img src="../img/Cart.png" width="50" height="50"></a></li>
     <!--    <li><a href="account.php"><img src="../img/login.png" width="50" height="50"></a></li>-->
     <?php
     echo "<li><a href=" . $src . "><img src='../img/login.png' width='50' height='50'></a></li>"

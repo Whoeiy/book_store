@@ -105,11 +105,11 @@ $book0 = explode("," , $bookarray[$bookid]);
         <h2>New books on the shelves</h2>
 				<div >
 
-					<span>BookImg:</span>  &nbsp; &nbsp;  <input type="text" class="Form-Input2" style="height=20px" id="subbook"  name="bookaddress"><br><br>
-					<span>Name:</span> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  <input type="text" class="Form-Input2" style="height=20px" id="subbook"  name="bookname"><br><br>
-					<span>Author:</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input type="text" class="Form-Input2" style="height=20px" id="subbook"  name="bookauthor"><br><br>
-					<span>Price:</span>  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  <input type="text" class="Form-Input2" style="height=20px" id="subbook"  name="bookprice"><br><br>
-                    <span>Inventory:</span>  &nbsp;&nbsp;&nbsp; <input type="text" class="Form-Input2" style="height=20px" id="subbook"  name="bookstoreage"><br><br>
+					<span>BookImg:</span>  &nbsp; &nbsp;  <input type="text" class="Form-Input2" style="height:20px" id="subbook"  name="bookaddress"><br><br>
+					<span>Name:</span> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  <input type="text" class="Form-Input2" style="height:20px" id="subbook"  name="bookname"><br><br>
+					<span>Author:</span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input type="text" class="Form-Input2" style="height:20px" id="subbook"  name="bookauthor"><br><br>
+					<span>Price:</span>  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  <input type="text" class="Form-Input2" style="height:20px" id="subbook"  name="bookprice"><br><br>
+                    <span>Inventory:</span>  &nbsp;&nbsp;&nbsp; <input type="text" class="Form-Input2" style="height:20px" id="subbook"  name="bookstoreage"><br><br>
 
 
    					 <button type="submit" class="Submit_Botton" id="subscribesub" name="updateInventory" >Update Inventory</button>
@@ -129,11 +129,11 @@ $book2[4]=$_POST["book2"];
 $book4[4]=$_POST["book4"];
 
 
-$new[0] = implode($book0,",");
-$new[1] = implode($book1,",");
-$new[2] = implode($book2,",");
-$new[3] = implode($book3,",");
-$new[4] = implode($book4,",");
+$new[0] = implode(",", $book0);
+$new[1] = implode(",", $book0);
+$new[2] = implode(",", $book2);
+$new[3] = implode(",", $book3);
+$new[4] = implode(",", $book4);
 
 
 
@@ -143,7 +143,7 @@ $book5[1]=$_POST["bookname"];
 $book5[2]=$_POST["bookauthor"];
 $book5[3]=$_POST["bookprice"];
 $book5[4]=$_POST["bookstoreage"];
-$new[5] = implode($book5,",");
+$new[5] = implode(",", $book5);
 
 $newarray=implode($new,"\n");
    $numbytes = file_put_contents('../dataFile/book.txt', $newarray); //如果文件不存在创建文件，并写入内容
